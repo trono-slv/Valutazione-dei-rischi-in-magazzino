@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valutazione dei Rischi in Magazzino</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <div class="header-badge">
+                <i class="fas fa-warehouse"></i>
+            </div>
+            <h1>VALUTAZIONE DEI RISCHI IN MAGAZZINO</h1>
+            <p class="header-subtitle">Analisi completa dei rischi specifici per le attività di magazzino</p>
+            <div class="header-meta">
+                <span><i class="fas fa-user"></i> Salvatore Trono</span>
+                <span><i class="fas fa-calendar"></i> 2026</span>
+                <span><i class="fas fa-shield-alt"></i> Sicurezza sul Lavoro</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGAZIONE -->
+    <nav class="nav-container" id="nav">
+        <button class="nav-btn active" data-section="home" onclick="showSection('home')">
+            <i class="fas fa-home"></i> Home
+        </button>
+        <button class="nav-btn" data-section="rischi" onclick="showSection('rischi')">
+            <i class="fas fa-exclamation-triangle"></i> Analisi Rischi
+        </button>
+        <button class="nav-btn" data-section="test" onclick="showSection('test')">
+            <i class="fas fa-clipboard-check"></i> Test
+        </button>
+        <button class="nav-btn" data-section="crediti" onclick="showSection('crediti')">
+            <i class="fas fa-info-circle"></i> Crediti
+        </button>
+    </nav>
+
+    <!-- SEZIONE HOME -->
+    <section class="section" id="section-home">
+        <div class="container">
+            <div class="welcome-card">
+                <h2><i class="fas fa-bullhorn"></i> Presentazione</h2>
+                <p>Benvenuto nella piattaforma interattiva per la <strong>Valutazione dei Rischi in Magazzino</strong>, realizzata da <strong>Salvatore Trono</strong>.</p>
+                <p>Questo strumento analizza le principali categorie di rischio presenti nelle attività di magazzino, fornendo per ciascun rischio una descrizione delle <strong>cause</strong>, dei <strong>possibili danni</strong> e delle <strong>misure di prevenzione e protezione</strong>.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-boxes"></i>
+                        <h3>8 Categorie</h3>
+                        <p>Rischi analizzati per area tematica</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-search"></i>
+                        <h3>43 Rischi Specifici</h3>
+                        <p>Ogni rischio con cause, danni e prevenzione</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Test Interattivo</h3>
+                        <p>Verifica le tue conoscenze</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer-card">
+                <h3><i class="fas fa-exclamation-circle"></i> Disclaimer</h3>
+                <p>Questo strumento ha <strong>finalità esclusivamente didattiche e informative</strong>. Non sostituisce in alcun modo il Documento di Valutazione dei Rischi (DVR) aziendale né la consulenza di professionisti abilitati in materia di sicurezza sul lavoro. Le informazioni contenute sono di carattere generale e devono essere adattate al contesto specifico di ogni realtà lavorativa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE RISCHI -->
+    <section class="section hidden" id="section-rischi">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Categorie di Rischio</h2>
+            <p class="section-desc">Seleziona una categoria per visualizzare tutti i rischi specifici con cause, danni e misure di prevenzione.</p>
+            <div class="categories-grid" id="categories-grid">
+                <!-- Generato da JS -->
+            </div>
+            <div id="risk-detail" class="risk-detail hidden">
+                <!-- Generato da JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE TEST -->
+    <section class="section hidden" id="section-test">
+        <div class="container">
+            <div id="test-intro">
+                <h2 class="section-title"><i class="fas fa-clipboard-check"></i> Test di Verifica</h2>
+                <p class="section-desc">Metti alla prova le tue conoscenze sulla sicurezza in magazzino. 15 domande estratte casualmente.</p>
+                <div class="test-config">
+                    <button class="btn-start" onclick="startTest()">
+                        <i class="fas fa-play"></i> Inizia il Test
+                    </button>
+                </div>
+            </div>
+            <div id="test-area" class="hidden">
+                <div class="test-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span id="progress-text">Domanda 1 di 15</span>
+                </div>
+                <div id="question-container"></div>
+                <div class="test-nav">
+                    <button class="btn-nav" id="btn-prev" onclick="prevQuestion()" disabled>
+                        <i class="fas fa-arrow-left"></i> Precedente
+                    </button>
+                    <button class="btn-nav" id="btn-next" onclick="nextQuestion()">
+                        Successiva <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-submit hidden" id="btn-submit" onclick="submitTest()">
+                        <i class="fas fa-check-circle"></i> Consegna Test
+                    </button>
+                </div>
+            </div>
+            <div id="test-results" class="hidden"></div>
+        </div>
+    </section>
+
+    <!-- SEZIONE CREDITI -->
+    <section class="section hidden" id="section-crediti">
+        <div class="container">
+            <div class="credits-card">
+                <h2><i class="fas fa-info-circle"></i> Crediti e Informazioni</h2>
+                <div class="credits-content">
+                    <div class="credit-item">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <h3>Autore</h3>
+                            <p><strong>Salvatore Trono</strong></p>
+                        </div>
+                    </div>
+                    <div class="credit-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <h3>Anno</h3>
+                            <p>2026</p>
+                        </div>
+                    </div>
+                    <div class="credit-item">
+                        <i class="fas fa-bullseye"></i>
+                        <div>
+                            <h3>Scopo</h3>
+                            <p>Strumento didattico e informativo per la valutazione dei rischi nelle attività di magazzino.</p>
+                        </div>
+                    </div>
+                    <div class="credit-item">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <h3>Tecnologie</h3>
+                            <p>HTML5, CSS3, JavaScript Vanilla</p>
+                        </div>
+                    </div>
+                    <div class="credit-item">
+                        <i class="fas fa-gavel"></i>
+                        <div>
+                            <h3>Riferimenti Normativi</h3>
+                            <p>D.Lgs. 81/2008 - Testo Unico sulla Sicurezza sul Lavoro</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="disclaimer-card" style="margin-top:20px;">
+                    <p><strong>Nota:</strong> Questo strumento non sostituisce la valutazione dei rischi effettuata da professionisti abilitati. Ha finalità esclusivamente didattiche e informative.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Salvatore Trono - Valutazione dei Rischi in Magazzino</p>
+        <p>Strumento didattico e informativo</p>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
