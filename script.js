@@ -1005,3 +1005,407 @@ const categorieRischi = [
     }
 
 ]; // === FINE ARRAY categorieRischi ===
+
+/* ================================================
+   STATO DELL'APP
+   ================================================ */
+const stato = {
+    sezioneAttiva: 'home',
+    categoriaSelezionata: null,
+    rischioSelezionato: null,
+    rischiLetti: JSON.parse(localStorage.getItem('rischiLetti') || '[]')
+};
+
+/* ================================================
+   SALVATAGGIO PROGRESSI
+   ================================================ */
+function salvaProgressi() {
+    localStorage.setItem('rischiLetti', JSON.stringify(stato.rischiLetti));
+}
+
+function segnaComeLetto(catId, rischioIndex) {
+    const chiave = catId + '_' + rischioIndex;
+    if (!stato.rischiLetti.includes(chiave)) {
+        stato.rischiLetti.push(chiave);
+        salvaProgressi();
+    }
+}
+
+function isLetto(catId, rischioIndex) {
+    return stato.rischiLetti.includes(catId + '_' + rischioIndex);
+}
+
+function contaLettiCategoria(catId) {
+    return stato.rischiLetti.filter(k => k.startsWith(catId + '_')).length;
+}
+
+function contaTotaleRischi() {
+    let tot = 0;
+    categorieRischi.forEach(c => { tot += c.rischi.length; });
+    return tot;
+}
+
+/* ================================================
+   NAVIGAZIONE TRA SEZIONI
+   ================================================ */
+function mostraSezione(id) {
+    document.querySelectorAll('.sezione').forEach(s => {
+        s.classList.remove('attiva');
+    });
+
+    const target = document.getElementById('sez-' + id);
+    if (target) {
+        target.classList.add('attiva');
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.section === id) {
+            btn.classList.add('active');
+        }
+    });
+
+    if (id === 'rischi' || id === 'dettaglio') {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            if (btn.dataset.section === 'lezioni') {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    stato.sezioneAttiva = id;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ================================================
+   RENDER HOME
+   ================================================ */
+function renderHome() {
+    const totale = contaTotaleRischi();
+    const letti = stato.rischiLetti.length;
+    const percentuale = totale > 0 ? Math.round((letti / totale) * 100) : 0;
+
+    document.getElementById('sez-home').innerHTML = `
+        <div style="max-width:800px; margin:0 auto;">
+            <div style="text-align:center; margin-bottom:32px;">
+                <h1 style="font-size:2rem; font-weight:800; color:var(--primary-dark); margin-bottom:8px;">
+                    ⚠️ Valutazione dei Rischi in Magazzino
+                </h1>
+                <p style="color:var(--text-light); font-size:1.05rem;">
+                    Strumento didattico — Dott. Salvatore Trono
+                </p>
+            </div>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:16px; margin-bottom:32px;">
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--primary);">${categorieRischi.length}</div>
+                    <div style="color:var(--text-light); font-size:0.9rem;">Categorie</div>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--accent);">${totale}</div>
+                    <div style="color:var(--text-light); font-size:0.9rem;">Rischi totali</div>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--success);">${letti}</div>
+                    <div style="color:var(--text-light); font-size:0.9rem;">Rischi studiati</div>
+                </div>
+            </div>
+
+            <div style="background:var(--bg-card); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow-sm); margin-bottom:24px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <span style="font-weight:600;">Progresso generale</span>
+                    <span style="font-weight:700; color:var(--primary);">${percentuale}%</span>
+                </div>
+                <div style="background:#e2e8f0; border-radius:99px; height:12px; overflow:hidden;">
+                    <div style="background:linear-gradient(90deg, var(--primary-light), var(--success)); height:100%; width:${percentuale}%; border-radius:99px; transition: width 0.5s ease;"></div>
+                </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <button onclick="mostraSezione('lezioni'); renderLezioni();"
+                    style="padding:16px; background:var(--primary); color:white; border:none; border-radius:var(--radius); font-size:1rem; font-weight:600; cursor:pointer; transition:var(--transition);">
+                    📚 Inizia le Lezioni
+                </button>
+                <button onclick="mostraSezione('statistiche'); renderStatistiche();"
+                    style="padding:16px; background:var(--bg-card); color:var(--primary); border:2px solid var(--primary); border-radius:var(--radius); font-size:1rem; font-weight:600; cursor:pointer; transition:var(--transition);">
+                    📊 Vedi Statistiche
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+/* ================================================
+   RENDER LEZIONI (GRIGLIA CATEGORIE)
+   ================================================ */
+function renderLezioni() {
+    let html = `
+        <div style="max-width:900px; margin:0 auto;">
+            <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:20px; color:var(--primary-dark);">
+                📚 Categorie di Rischio
+            </h2>
+            <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:16px;">
+    `;
+
+    categorieRischi.forEach(cat => {
+        const totRischi = cat.rischi.length;
+        const lettiCat = contaLettiCategoria(cat.id);
+        const perc = Math.round((lettiCat / totRischi) * 100);
+        const completa = lettiCat === totRischi;
+
+        html += `
+            <div onclick="apriCategoria('${cat.id}')"
+                style="background:var(--bg-card); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow-sm); cursor:pointer; transition:var(--transition); border-left:4px solid ${completa ? 'var(--success)' : 'var(--primary-light)'};"
+                onmouseover="this.style.boxShadow='var(--shadow-md)'; this.style.transform='translateY(-2px)';"
+                onmouseout="this.style.boxShadow='var(--shadow-sm)'; this.style.transform='none';">
+                <div style="font-size:2rem; margin-bottom:8px;">${cat.icon}</div>
+                <div style="font-weight:700; font-size:1.05rem; margin-bottom:4px; color:var(--text-main);">${cat.nome}</div>
+                <div style="color:var(--text-light); font-size:0.85rem; margin-bottom:12px;">${cat.desc}</div>
+                <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:6px;">
+                    <span>${lettiCat}/${totRischi} studiati</span>
+                    <span style="font-weight:600; color:${completa ? 'var(--success)' : 'var(--primary)'};">${perc}%</span>
+                </div>
+                <div style="background:#e2e8f0; border-radius:99px; height:6px; overflow:hidden;">
+                    <div style="background:${completa ? 'var(--success)' : 'var(--primary-light)'}; height:100%; width:${perc}%; border-radius:99px;"></div>
+                </div>
+            </div>
+        `;
+    });
+
+    html += `</div></div>`;
+    document.getElementById('sez-lezioni').innerHTML = html;
+}
+
+/* ================================================
+   APRI CATEGORIA (LISTA RISCHI)
+   ================================================ */
+function apriCategoria(catId) {
+    const cat = categorieRischi.find(c => c.id === catId);
+    if (!cat) return;
+
+    stato.categoriaSelezionata = catId;
+
+    let html = `
+        <div style="max-width:800px; margin:0 auto;">
+            <button onclick="mostraSezione('lezioni'); renderLezioni();"
+                style="background:none; border:none; color:var(--primary); font-weight:600; cursor:pointer; font-size:0.95rem; margin-bottom:16px; display:flex; align-items:center; gap:6px;">
+                ← Torna alle categorie
+            </button>
+            <h2 style="font-size:1.4rem; font-weight:700; margin-bottom:4px; color:var(--primary-dark);">
+                ${cat.icon} ${cat.nome}
+            </h2>
+            <p style="color:var(--text-light); margin-bottom:20px;">${cat.rischi.length} rischi in questa categoria</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+    `;
+
+    cat.rischi.forEach((r, i) => {
+        const letto = isLetto(catId, i);
+        html += `
+            <div onclick="apriDettaglio('${catId}', ${i})"
+                style="background:var(--bg-card); border-radius:var(--radius-sm); padding:16px 20px; box-shadow:var(--shadow-sm); cursor:pointer; transition:var(--transition); display:flex; align-items:center; gap:14px; border-left:4px solid ${letto ? 'var(--success)' : '#cbd5e1'};"
+                onmouseover="this.style.boxShadow='var(--shadow-md)';"
+                onmouseout="this.style.boxShadow='var(--shadow-sm)';">
+                <div style="width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:700; flex-shrink:0;
+                    background:${letto ? 'var(--success)' : '#e2e8f0'}; color:${letto ? 'white' : 'var(--text-light)'};">
+                    ${letto ? '✓' : (i + 1)}
+                </div>
+                <div style="flex:1;">
+                    <div style="font-weight:600; color:var(--text-main);">${r.titolo}</div>
+                    <div style="font-size:0.8rem; color:var(--text-light); margin-top:2px;">${r.cause.length} cause · ${r.danni.length} danni · ${r.prevenzioni.length} prevenzioni</div>
+                </div>
+                <div style="color:var(--text-light); font-size:1.2rem;">›</div>
+            </div>
+        `;
+    });
+
+    html += `</div></div>`;
+    document.getElementById('sez-rischi').innerHTML = html;
+    mostraSezione('rischi');
+}
+
+/* ================================================
+   APRI DETTAGLIO SINGOLO RISCHIO
+   ================================================ */
+function apriDettaglio(catId, index) {
+    const cat = categorieRischi.find(c => c.id === catId);
+    if (!cat || !cat.rischi[index]) return;
+
+    stato.categoriaSelezionata = catId;
+    stato.rischioSelezionato = index;
+
+    const r = cat.rischi[index];
+    segnaComeLetto(catId, index);
+
+    const haPrec = index > 0;
+    const haSucc = index < cat.rischi.length - 1;
+
+    let html = `
+        <div style="max-width:800px; margin:0 auto;">
+            <button onclick="apriCategoria('${catId}')"
+                style="background:none; border:none; color:var(--primary); font-weight:600; cursor:pointer; font-size:0.95rem; margin-bottom:16px; display:flex; align-items:center; gap:6px;">
+                ← Torna a ${cat.nome}
+            </button>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                <span style="font-size:1.5rem;">${cat.icon}</span>
+                <span style="font-size:0.85rem; color:var(--text-light);">Rischio ${index + 1} di ${cat.rischi.length}</span>
+            </div>
+            <h2 style="font-size:1.3rem; font-weight:700; color:var(--primary-dark); margin-bottom:24px;">${r.titolo}</h2>
+
+            <!-- CAUSE -->
+            <div style="background:#fef3c7; border-radius:var(--radius); padding:20px; margin-bottom:16px;">
+                <h3 style="font-weight:700; color:#92400e; margin-bottom:12px;">⚡ Cause</h3>
+                <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+                    ${r.cause.map(c => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--warning); font-size:0.7rem; margin-top:6px;">●</span><span>${c}</span></li>`).join('')}
+                </ul>
+            </div>
+
+            <!-- DANNI -->
+            <div style="background:#fee2e2; border-radius:var(--radius); padding:20px; margin-bottom:16px;">
+                <h3 style="font-weight:700; color:#991b1b; margin-bottom:12px;">🩹 Danni</h3>
+                <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+                    ${r.danni.map(d => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--danger); font-size:0.7rem; margin-top:6px;">●</span><span>${d}</span></li>`).join('')}
+                </ul>
+            </div>
+
+            <!-- PREVENZIONI -->
+            <div style="background:#d1fae5; border-radius:var(--radius); padding:20px; margin-bottom:24px;">
+                <h3 style="font-weight:700; color:#065f46; margin-bottom:12px;">🛡️ Prevenzioni</h3>
+                <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+                    ${r.prevenzioni.map(p => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--success); font-size:0.7rem; margin-top:6px;">●</span><span>${p}</span></li>`).join('')}
+                </ul>
+            </div>
+
+            <!-- NAVIGAZIONE -->
+            <div style="display:flex; justify-content:space-between; gap:12px;">
+                ${haPrec ? `
+                    <button onclick="apriDettaglio('${catId}', ${index - 1})"
+                        style="flex:1; padding:12px; background:var(--bg-card); border:2px solid var(--primary); color:var(--primary); border-radius:var(--radius-sm); font-weight:600; cursor:pointer; transition:var(--transition);">
+                        ← Precedente
+                    </button>
+                ` : '<div style="flex:1;"></div>'}
+                ${haSucc ? `
+                    <button onclick="apriDettaglio('${catId}', ${index + 1})"
+                        style="flex:1; padding:12px; background:var(--primary); color:white; border:none; border-radius:var(--radius-sm); font-weight:600; cursor:pointer; transition:var(--transition);">
+                        Successivo →
+                    </button>
+                ` : `
+                    <button onclick="apriCategoria('${catId}')"
+                        style="flex:1; padding:12px; background:var(--success); color:white; border:none; border-radius:var(--radius-sm); font-weight:600; cursor:pointer; transition:var(--transition);">
+                        ✅ Categoria completata!
+                    </button>
+                `}
+            </div>
+        </div>
+    `;
+
+    document.getElementById('sez-dettaglio').innerHTML = html;
+    mostraSezione('dettaglio');
+}
+
+/* ================================================
+   RENDER STATISTICHE
+   ================================================ */
+function renderStatistiche() {
+    const totale = contaTotaleRischi();
+    const letti = stato.rischiLetti.length;
+    const percentuale = totale > 0 ? Math.round((letti / totale) * 100) : 0;
+    const categComplete = categorieRischi.filter(c => contaLettiCategoria(c.id) === c.rischi.length).length;
+
+    let htmlCategorie = '';
+    categorieRischi.forEach(cat => {
+        const totCat = cat.rischi.length;
+        const lettiCat = contaLettiCategoria(cat.id);
+        const percCat = Math.round((lettiCat / totCat) * 100);
+        const completa = lettiCat === totCat;
+
+        htmlCategorie += `
+            <div onclick="apriCategoria('${cat.id}')"
+                style="background:var(--bg-card); border-radius:var(--radius-sm); padding:16px; box-shadow:var(--shadow-sm); cursor:pointer; transition:var(--transition);"
+                onmouseover="this.style.boxShadow='var(--shadow-md)';"
+                onmouseout="this.style.boxShadow='var(--shadow-sm)';">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="font-weight:600;">${cat.icon} ${cat.nome}</span>
+                    <span style="font-size:0.85rem; font-weight:700; color:${completa ? 'var(--success)' : 'var(--primary)'};">
+                        ${completa ? '✅' : lettiCat + '/' + totCat}
+                    </span>
+                </div>
+                <div style="background:#e2e8f0; border-radius:99px; height:8px; overflow:hidden;">
+                    <div style="background:${completa ? 'var(--success)' : 'var(--primary-light)'}; height:100%; width:${percCat}%; border-radius:99px; transition:width 0.5s ease;"></div>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('sez-statistiche').innerHTML = `
+        <div style="max-width:800px; margin:0 auto;">
+            <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:20px; color:var(--primary-dark);">📊 Statistiche</h2>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:12px; margin-bottom:24px;">
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--primary);">${percentuale}%</div>
+                    <div style="color:var(--text-light); font-size:0.85rem;">Completamento</div>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--success);">${letti}</div>
+                    <div style="color:var(--text-light); font-size:0.85rem;">Rischi studiati</div>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--accent);">${totale - letti}</div>
+                    <div style="color:var(--text-light); font-size:0.85rem;">Da studiare</div>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:20px; text-align:center; box-shadow:var(--shadow-sm);">
+                    <div style="font-size:2rem; font-weight:800; color:var(--primary-dark);">${categComplete}/${categorieRischi.length}</div>
+                    <div style="color:var(--text-light); font-size:0.85rem;">Cat. complete</div>
+                </div>
+            </div>
+
+            <h3 style="font-weight:600; margin-bottom:12px;">Dettaglio per categoria</h3>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+                ${htmlCategorie}
+            </div>
+
+            ${letti > 0 ? `
+                <button onclick="resetProgressi()"
+                    style="width:100%; padding:14px; background:var(--danger); color:white; border:none; border-radius:var(--radius-sm); font-weight:600; cursor:pointer; transition:var(--transition); opacity:0.8;"
+                    onmouseover="this.style.opacity='1';"
+                    onmouseout="this.style.opacity='0.8';">
+                    🗑️ Azzera tutti i progressi
+                </button>
+            ` : ''}
+        </div>
+    `;
+}
+
+/* ================================================
+   RESET PROGRESSI
+   ================================================ */
+function resetProgressi() {
+    if (confirm('Vuoi davvero azzerare tutti i progressi? Questa azione non è reversibile.')) {
+        stato.rischiLetti = [];
+        localStorage.removeItem('rischiLetti');
+        renderStatistiche();
+    }
+}
+
+/* ================================================
+   EVENT LISTENERS + INIZIALIZZAZIONE
+   ================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Navigazione principale
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const sez = this.dataset.section;
+            mostraSezione(sez);
+
+            if (sez === 'home') renderHome();
+            if (sez === 'lezioni') renderLezioni();
+            if (sez === 'statistiche') renderStatistiche();
+        });
+    });
+
+    // Primo render
+    renderHome();
+});
+
