@@ -477,3 +477,564 @@ const domande = [
         categoria: "organizzazione"
     }
 ];
+
+/* ========================================
+   STATO APPLICAZIONE
+   ======================================== */
+let stato = {
+    sezioneAttiva: 'home',
+    categoriaAttiva: null,
+    rischioAttivo: null,
+    testAttivo: false,
+    domandaCorrente: 0,
+    risposte: [],
+    domandeMescolate: [],
+    punteggio: 0
+};
+
+/* ========================================
+   NAVIGAZIONE SEZIONI
+   ======================================== */
+function mostraSezione(id) {
+    // Nascondi tutte le sezioni
+    document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+    // Mostra quella richiesta
+    const sezione = document.getElementById(id);
+    if (sezione) {
+        sezione.classList.remove('hidden');
+    }
+    // Aggiorna nav attiva
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    const navBtn = document.querySelector(`.nav-btn[data-section="${id}"]`);
+    if (navBtn) navBtn.classList.add('active');
+
+    stato.sezioneAttiva = id;
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Reset vista rischi se si torna alla sezione
+    if (id === 'rischi') {
+        mostraListaCategorie();
+    }
+    if (id === 'test' && !stato.testAttivo) {
+        mostraIntroTest();
+    }
+}
+
+/* ========================================
+   SEZIONE HOME - RENDER
+   ======================================== */
+function renderHome() {
+    const container = document.getElementById('home-content');
+    if (!container) return;
+
+    container.innerHTML = `
+        <div class="welcome-card">
+            <div class="welcome-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>Benvenuto</h2>
+            <p>Questo strumento didattico ti guida nell'analisi dei <strong>rischi specifici</strong> presenti nelle attività di magazzino, secondo il <strong>D.Lgs. 81/2008</strong>.</p>
+            <div class="features-grid">
+                <div class="feature-item" onclick="mostraSezione('rischi')">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <h3>Esplora i Rischi</h3>
+                    <p>6 categorie con rischi dettagliati, cause, danni e misure di prevenzione</p>
+                </div>
+                <div class="feature-item" onclick="mostraSezione('test')">
+                    <div class="feature-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Test di Valutazione</h3>
+                    <p>43 domande per verificare le tue conoscenze sulla sicurezza in magazzino</p>
+                </div>
+            </div>
+        </div>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">${categorieRischi.length}</span>
+                <span class="stat-label">Categorie</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">${categorieRischi.reduce((t, c) => t + c.rischi.length, 0)}</span>
+                <span class="stat-label">Rischi Analizzati</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">${domande.length}</span>
+                <span class="stat-label">Domande Test</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">81/08</span>
+                <span class="stat-label">D.Lgs. Riferimento</span>
+            </div>
+        </div>
+    `;
+}
+
+/* ========================================
+   SEZIONE RISCHI - LISTA CATEGORIE
+   ======================================== */
+function mostraListaCategorie() {
+    const container = document.getElementById('rischi-content');
+    if (!container) return;
+
+    stato.categoriaAttiva = null;
+    stato.rischioAttivo = null;
+
+    let html = `
+        <div class="section-title">
+            <h2><i class="fas fa-exclamation-triangle"></i> Categorie di Rischio</h2>
+            <p>Seleziona una categoria per esplorare i rischi specifici</p>
+        </div>
+        <div class="categories-grid">
+    `;
+
+    categorieRischi.forEach(cat => {
+        html += `
+            <div class="category-card" onclick="mostraCategoria('${cat.id}')">
+                <div class="category-icon">${cat.icon}</div>
+                <h3>${cat.nome}</h3>
+                <p>${cat.desc}</p>
+                <div class="category-count">${cat.rischi.length} rischi</div>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+}
+
+/* ========================================
+   SEZIONE RISCHI - DETTAGLIO CATEGORIA
+   ======================================== */
+function mostraCategoria(catId) {
+    const cat = categorieRischi.find(c => c.id === catId);
+    if (!cat) return;
+
+    stato.categoriaAttiva = catId;
+    const container = document.getElementById('rischi-content');
+
+    let html = `
+        <div class="section-title">
+            <button class="back-btn" onclick="mostraListaCategorie()">
+                <i class="fas fa-arrow-left"></i> Tutte le categorie
+            </button>
+            <h2>${cat.icon} ${cat.nome}</h2>
+            <p>${cat.desc}</p>
+        </div>
+        <div class="rischi-list">
+    `;
+
+    cat.rischi.forEach((rischio, idx) => {
+        html += `
+            <div class="rischio-card" onclick="mostraDettaglioRischio('${catId}', ${idx})">
+                <div class="rischio-header">
+                    <span class="rischio-num">${idx + 1}</span>
+                    <h3>${rischio.titolo}</h3>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ========================================
+   SEZIONE RISCHI - DETTAGLIO SINGOLO RISCHIO
+   ======================================== */
+function mostraDettaglioRischio(catId, idx) {
+    const cat = categorieRischi.find(c => c.id === catId);
+    if (!cat || !cat.rischi[idx]) return;
+
+    const rischio = cat.rischi[idx];
+    stato.rischioAttivo = idx;
+    const container = document.getElementById('rischi-content');
+
+    let html = `
+        <div class="section-title">
+            <button class="back-btn" onclick="mostraCategoria('${catId}')">
+                <i class="fas fa-arrow-left"></i> ${cat.nome}
+            </button>
+        </div>
+        <div class="risk-detail-card">
+            <div class="risk-detail-header">
+                <span class="rischio-num-lg">${idx + 1}</span>
+                <div>
+                    <h2>${rischio.titolo}</h2>
+                    <span class="risk-badge">${cat.nome}</span>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-block info-cause">
+                    <h3><i class="fas fa-exclamation-circle"></i> Cause</h3>
+                    <ul>${rischio.cause.map(c => `<li>${c}</li>`).join('')}</ul>
+                </div>
+                <div class="info-block info-danni">
+                    <h3><i class="fas fa-heartbeat"></i> Possibili Danni</h3>
+                    <ul>${rischio.danni.map(d => `<li>${d}</li>`).join('')}</ul>
+                </div>
+            </div>
+            <div class="info-block info-prevenzioni full-width">
+                <h3><i class="fas fa-check-circle"></i> Misure di Prevenzione e Protezione</h3>
+                <ul>${rischio.prevenzioni.map(p => `<li>${p}</li>`).join('')}</ul>
+            </div>
+        </div>
+    `;
+
+    // Navigazione tra rischi
+    html += `<div class="risk-nav">`;
+    if (idx > 0) {
+        html += `<button class="risk-nav-btn" onclick="mostraDettaglioRischio('${catId}', ${idx - 1})">
+            <i class="fas fa-arrow-left"></i> Precedente
+        </button>`;
+    } else {
+        html += `<div></div>`;
+    }
+    if (idx < cat.rischi.length - 1) {
+        html += `<button class="risk-nav-btn" onclick="mostraDettaglioRischio('${catId}', ${idx + 1})">
+            Successivo <i class="fas fa-arrow-right"></i>
+        </button>`;
+    } else {
+        html += `<div></div>`;
+    }
+    html += `</div>`;
+
+    container.innerHTML = html;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ========================================
+   SEZIONE TEST - INTRO
+   ======================================== */
+function mostraIntroTest() {
+    const container = document.getElementById('test-content');
+    if (!container) return;
+
+    stato.testAttivo = false;
+
+    // Carica migliore punteggio da localStorage
+    const best = localStorage.getItem('bestScore_magazzino');
+
+    let bestHtml = '';
+    if (best !== null) {
+        bestHtml = `
+            <div class="best-score">
+                <i class="fas fa-trophy"></i>
+                <span>Miglior punteggio: <strong>${best}/${domande.length}</strong></span>
+            </div>
+        `;
+    }
+
+    container.innerHTML = `
+        <div class="section-title">
+            <h2><i class="fas fa-clipboard-check"></i> Test di Valutazione</h2>
+            <p>Verifica le tue conoscenze sulla sicurezza in magazzino</p>
+        </div>
+        <div class="test-intro-card">
+            <div class="test-intro-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Sei pronto?</h3>
+            <p>Il test è composto da <strong>${domande.length} domande</strong> a risposta multipla suddivise in 6 categorie.</p>
+            <div class="test-info-grid">
+                <div class="test-info-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>${domande.length} domande</span>
+                </div>
+                <div class="test-info-item">
+                    <i class="fas fa-random"></i>
+                    <span>Ordine casuale</span>
+                </div>
+                <div class="test-info-item">
+                    <i class="fas fa-check-double"></i>
+                    <span>Correzione immediata</span>
+                </div>
+                <div class="test-info-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Report finale</span>
+                </div>
+            </div>
+            ${bestHtml}
+            <button class="btn-start-test" onclick="iniziaTest()">
+                <i class="fas fa-play"></i> Inizia il Test
+            </button>
+        </div>
+    `;
+}
+
+/* ========================================
+   TEST - MESCOLA E INIZIA
+   ======================================== */
+function mescolaArray(arr) {
+    const copia = [...arr];
+    for (let i = copia.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+    return copia;
+}
+
+function iniziaTest() {
+    stato.testAttivo = true;
+    stato.domandaCorrente = 0;
+    stato.risposte = [];
+    stato.punteggio = 0;
+    stato.domandeMescolate = mescolaArray(domande);
+    mostraDomanda();
+}
+
+/* ========================================
+   TEST - MOSTRA DOMANDA
+   ======================================== */
+function mostraDomanda() {
+    const container = document.getElementById('test-content');
+    const d = stato.domandeMescolate[stato.domandaCorrente];
+    const num = stato.domandaCorrente + 1;
+    const tot = stato.domandeMescolate.length;
+    const progresso = Math.round((num / tot) * 100);
+
+    // Trova nome categoria
+    const cat = categorieRischi.find(c => c.id === d.categoria);
+    const catNome = cat ? cat.nome : '';
+    const catIcon = cat ? cat.icon : '';
+
+    container.innerHTML = `
+        <div class="test-progress-bar">
+            <div class="test-progress-fill" style="width: ${progresso}%"></div>
+        </div>
+        <div class="test-status">
+            <span>Domanda ${num} di ${tot}</span>
+            <span class="test-cat-badge">${catIcon} ${catNome}</span>
+        </div>
+        <div class="question-card">
+            <h3 class="question-text">${d.domanda}</h3>
+            <div class="options-list">
+                ${d.opzioni.map((opt, i) => `
+                    <button class="option-btn" id="opt-${i}" onclick="selezionaRisposta(${i})">
+                        <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+                        <span class="option-text">${opt}</span>
+                    </button>
+                `).join('')}
+            </div>
+            <div class="test-feedback hidden" id="test-feedback"></div>
+            <div class="test-nav">
+                <button class="btn-test-nav hidden" id="btn-prossima" onclick="prossimaDomanda()">
+                    ${num < tot ? 'Prossima Domanda <i class="fas fa-arrow-right"></i>' : 'Vedi Risultati <i class="fas fa-chart-bar"></i>'}
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+/* ========================================
+   TEST - SELEZIONA RISPOSTA
+   ======================================== */
+function selezionaRisposta(indice) {
+    const d = stato.domandeMescolate[stato.domandaCorrente];
+
+    // Disabilita tutti i bottoni
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.disabled = true;
+        btn.style.pointerEvents = 'none';
+    });
+
+    const corretta = d.corretta;
+    const isCorretta = indice === corretta;
+
+    if (isCorretta) {
+        stato.punteggio++;
+    }
+
+    stato.risposte.push({
+        domanda: d.domanda,
+        risposta: indice,
+        corretta: corretta,
+        isCorretta: isCorretta,
+        categoria: d.categoria
+    });
+
+    // Evidenzia risposte
+    document.getElementById(`opt-${corretta}`).classList.add('option-correct');
+    if (!isCorretta) {
+        document.getElementById(`opt-${indice}`).classList.add('option-wrong');
+    }
+
+    // Feedback
+    const feedback = document.getElementById('test-feedback');
+    feedback.classList.remove('hidden');
+    if (isCorretta) {
+        feedback.className = 'test-feedback feedback-correct';
+        feedback.innerHTML = '<i class="fas fa-check-circle"></i> Risposta corretta!';
+    } else {
+        feedback.className = 'test-feedback feedback-wrong';
+        feedback.innerHTML = `<i class="fas fa-times-circle"></i> Sbagliato. La risposta corretta era: <strong>${d.opzioni[corretta]}</strong>`;
+    }
+
+    // Mostra pulsante prossima
+    document.getElementById('btn-prossima').classList.remove('hidden');
+}
+
+/* ========================================
+   TEST - PROSSIMA DOMANDA / RISULTATI
+   ======================================== */
+function prossimaDomanda() {
+    stato.domandaCorrente++;
+    if (stato.domandaCorrente < stato.domandeMescolate.length) {
+        mostraDomanda();
+    } else {
+        mostraRisultati();
+    }
+}
+
+/* ========================================
+   TEST - RISULTATI FINALI
+   ======================================== */
+function mostraRisultati() {
+    const container = document.getElementById('test-content');
+    const tot = stato.domandeMescolate.length;
+    const punt = stato.punteggio;
+    const perc = Math.round((punt / tot) * 100);
+
+    // Salva miglior punteggio
+    const prevBest = localStorage.getItem('bestScore_magazzino');
+    if (prevBest === null || punt > parseInt(prevBest)) {
+        localStorage.setItem('bestScore_magazzino', punt);
+    }
+
+    // Valutazione
+    let valutazione, valClass, valIcon;
+    if (perc >= 90) {
+        valutazione = 'Eccellente';
+        valClass = 'val-excellent';
+        valIcon = 'fas fa-star';
+    } else if (perc >= 75) {
+        valutazione = 'Buono';
+        valClass = 'val-good';
+        valIcon = 'fas fa-thumbs-up';
+    } else if (perc >= 60) {
+        valutazione = 'Sufficiente';
+        valClass = 'val-sufficient';
+        valIcon = 'fas fa-check';
+    } else {
+        valutazione = 'Insufficiente';
+        valClass = 'val-fail';
+        valIcon = 'fas fa-exclamation-triangle';
+    }
+
+    // Statistiche per categoria
+    let statsCat = {};
+    categorieRischi.forEach(c => {
+        statsCat[c.id] = { nome: c.nome, icon: c.icon, corrette: 0, totale: 0 };
+    });
+    stato.risposte.forEach(r => {
+        if (statsCat[r.categoria]) {
+            statsCat[r.categoria].totale++;
+            if (r.isCorretta) statsCat[r.categoria].corrette++;
+        }
+    });
+
+    let catStatsHtml = '';
+    Object.values(statsCat).forEach(cs => {
+        if (cs.totale > 0) {
+            const p = Math.round((cs.corrette / cs.totale) * 100);
+            const barColor = p >= 75 ? 'var(--success)' : p >= 50 ? 'var(--warning)' : 'var(--danger)';
+            catStatsHtml += `
+                <div class="cat-stat-item">
+                    <div class="cat-stat-header">
+                        <span>${cs.icon} ${cs.nome}</span>
+                        <span>${cs.corrette}/${cs.totale}</span>
+                    </div>
+                    <div class="cat-stat-bar">
+                        <div class="cat-stat-fill" style="width:${p}%; background:${barColor}"></div>
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    // Riepilogo errori
+    let erroriHtml = '';
+    const errori = stato.risposte.filter(r => !r.isCorretta);
+    if (errori.length > 0) {
+        erroriHtml = `
+            <div class="errori-section">
+                <h3><i class="fas fa-times-circle"></i> Risposte Errate (${errori.length})</h3>
+                <div class="errori-list">
+                    ${errori.map(e => {
+                        const dOrig = stato.domandeMescolate.find(dm => dm.domanda === e.domanda);
+                        return `
+                            <div class="errore-item">
+                                <p class="errore-domanda">${e.domanda}</p>
+                                <p class="errore-tua"><i class="fas fa-times"></i> Tua risposta: ${dOrig.opzioni[e.risposta]}</p>
+                                <p class="errore-corretta"><i class="fas fa-check"></i> Corretta: ${dOrig.opzioni[e.corretta]}</p>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    container.innerHTML = `
+        <div class="results-card">
+            <div class="results-header ${valClass}">
+                <i class="${valIcon}"></i>
+                <div class="results-score">${perc}%</div>
+                <div class="results-label">${valutazione}</div>
+                <div class="results-detail">${punt} risposte corrette su ${tot}</div>
+            </div>
+            <div class="cat-stats">
+                <h3>Dettaglio per Categoria</h3>
+                ${catStatsHtml}
+            </div>
+            ${erroriHtml}
+            <div class="results-actions">
+                <button class="btn-restart" onclick="iniziaTest()">
+                    <i class="fas fa-redo"></i> Ripeti il Test
+                </button>
+                <button class="btn-back-home" onclick="mostraIntroTest()">
+                    <i class="fas fa-home"></i> Torna all'Intro
+                </button>
+            </div>
+        </div>
+    `;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ========================================
+   SCROLL TO TOP BUTTON
+   ======================================== */
+window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTop');
+    if (btn) {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }
+});
+
+/* ========================================
+   INIZIALIZZAZIONE
+   ======================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Setup navigazione
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const section = btn.getAttribute('data-section');
+            if (section) mostraSezione(section);
+        });
+    });
+
+    // Render iniziale
+    renderHome();
+    mostraListaCategorie();
+    mostraIntroTest();
+
+    // Mostra home di default
+    mostraSezione('home');
+});
