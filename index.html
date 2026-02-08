@@ -1,0 +1,856 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 16.0px 'Apple Color Emoji'; font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="it"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;title&gt;Analisi Rischi nel Magazzino | Dott. Salvatore Trono&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;meta name="description" content="Analisi Completa 43 Rischi Specifici Magazzino - Dott. Salvatore Trono Formatore Esperto Sicurezza Luoghi di Lavoro"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;script&gt;</span></p>
+<p class="p1"><span class="s1">        tailwind.config = {</span></p>
+<p class="p1"><span class="s1">            darkMode: 'class',</span></p>
+<p class="p1"><span class="s1">            theme: {</span></p>
+<p class="p1"><span class="s1">                extend: {</span></p>
+<p class="p1"><span class="s1">                    fontFamily: { sans: ['Inter', 'sans-serif'] }</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            }</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">    &lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;style&gt;</span></p>
+<p class="p1"><span class="s1">        * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }</span></p>
+<p class="p1"><span class="s1">        body { background: #0f172a; color: #e2e8f0; min-height: 100vh; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* GLASS EFFECT */</span></p>
+<p class="p1"><span class="s1">        .glass {</span></p>
+<p class="p1"><span class="s1">            backdrop-filter: blur(20px);</span></p>
+<p class="p1"><span class="s1">            background: rgba(15, 23, 42, 0.95);</span></p>
+<p class="p1"><span class="s1">            border: 1px solid rgba(99, 102, 241, 0.2);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* HERO */</span></p>
+<p class="p1"><span class="s1">        .hero-gradient {</span></p>
+<p class="p1"><span class="s1">            background: linear-gradient(135deg, #1e293b 0%, #312e81 50%, #0f172a 100%);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* CATEGORY BUTTONS */</span></p>
+<p class="p1"><span class="s1">        .cat-btn {</span></p>
+<p class="p1"><span class="s1">            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);</span></p>
+<p class="p1"><span class="s1">            cursor: pointer;</span></p>
+<p class="p1"><span class="s1">            position: relative;</span></p>
+<p class="p1"><span class="s1">            overflow: hidden;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .cat-btn:hover {</span></p>
+<p class="p1"><span class="s1">            transform: translateY(-6px);</span></p>
+<p class="p1"><span class="s1">            box-shadow: 0 20px 40px -12px rgba(99, 102, 241, 0.4);</span></p>
+<p class="p1"><span class="s1">            border-color: rgba(99, 102, 241, 0.6);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .cat-btn:active {</span></p>
+<p class="p1"><span class="s1">            transform: translateY(-2px);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* RISK CARDS */</span></p>
+<p class="p1"><span class="s1">        .risk-card {</span></p>
+<p class="p1"><span class="s1">            transition: all 0.3s ease;</span></p>
+<p class="p1"><span class="s1">            border: 1px solid rgba(75, 85, 99, 0.3);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .risk-card:hover {</span></p>
+<p class="p1"><span class="s1">            border-color: rgba(99, 102, 241, 0.5);</span></p>
+<p class="p1"><span class="s1">            box-shadow: 0 10px 30px -8px rgba(99, 102, 241, 0.2);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* MODAL */</span></p>
+<p class="p1"><span class="s1">        .modal-overlay {</span></p>
+<p class="p1"><span class="s1">            position: fixed;</span></p>
+<p class="p1"><span class="s1">            top: 0; left: 0; right: 0; bottom: 0;</span></p>
+<p class="p1"><span class="s1">            background: rgba(0, 0, 0, 0.8);</span></p>
+<p class="p1"><span class="s1">            backdrop-filter: blur(8px);</span></p>
+<p class="p1"><span class="s1">            z-index: 100;</span></p>
+<p class="p1"><span class="s1">            display: none;</span></p>
+<p class="p1"><span class="s1">            justify-content: center;</span></p>
+<p class="p1"><span class="s1">            align-items: flex-start;</span></p>
+<p class="p1"><span class="s1">            padding: 20px;</span></p>
+<p class="p1"><span class="s1">            overflow-y: auto;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .modal-overlay.active {</span></p>
+<p class="p1"><span class="s1">            display: flex;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .modal-content {</span></p>
+<p class="p1"><span class="s1">            background: #1e293b;</span></p>
+<p class="p1"><span class="s1">            border: 1px solid rgba(99, 102, 241, 0.3);</span></p>
+<p class="p1"><span class="s1">            border-radius: 24px;</span></p>
+<p class="p1"><span class="s1">            max-width: 900px;</span></p>
+<p class="p1"><span class="s1">            width: 100%;</span></p>
+<p class="p1"><span class="s1">            margin: 40px auto;</span></p>
+<p class="p1"><span class="s1">            padding: 32px;</span></p>
+<p class="p1"><span class="s1">            position: relative;</span></p>
+<p class="p1"><span class="s1">            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .modal-close {</span></p>
+<p class="p1"><span class="s1">            position: sticky;</span></p>
+<p class="p1"><span class="s1">            top: 0;</span></p>
+<p class="p1"><span class="s1">            float: right;</span></p>
+<p class="p1"><span class="s1">            background: rgba(239, 68, 68, 0.2);</span></p>
+<p class="p1"><span class="s1">            border: 1px solid rgba(239, 68, 68, 0.4);</span></p>
+<p class="p1"><span class="s1">            color: #fca5a5;</span></p>
+<p class="p1"><span class="s1">            width: 48px; height: 48px;</span></p>
+<p class="p1"><span class="s1">            border-radius: 50%;</span></p>
+<p class="p1"><span class="s1">            font-size: 24px;</span></p>
+<p class="p1"><span class="s1">            cursor: pointer;</span></p>
+<p class="p1"><span class="s1">            z-index: 110;</span></p>
+<p class="p1"><span class="s1">            display: flex;</span></p>
+<p class="p1"><span class="s1">            align-items: center;</span></p>
+<p class="p1"><span class="s1">            justify-content: center;</span></p>
+<p class="p1"><span class="s1">            transition: all 0.3s ease;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .modal-close:hover {</span></p>
+<p class="p1"><span class="s1">            background: rgba(239, 68, 68, 0.5);</span></p>
+<p class="p1"><span class="s1">            transform: rotate(90deg);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* SCROLL TO TOP */</span></p>
+<p class="p1"><span class="s1">        .scroll-top {</span></p>
+<p class="p1"><span class="s1">            position: fixed;</span></p>
+<p class="p1"><span class="s1">            bottom: 24px; right: 24px;</span></p>
+<p class="p1"><span class="s1">            width: 56px; height: 56px;</span></p>
+<p class="p1"><span class="s1">            border-radius: 50%;</span></p>
+<p class="p1"><span class="s1">            background: linear-gradient(135deg, #6366f1, #8b5cf6);</span></p>
+<p class="p1"><span class="s1">            color: white;</span></p>
+<p class="p1"><span class="s1">            font-size: 24px;</span></p>
+<p class="p1"><span class="s1">            border: none;</span></p>
+<p class="p1"><span class="s1">            cursor: pointer;</span></p>
+<p class="p1"><span class="s1">            z-index: 90;</span></p>
+<p class="p1"><span class="s1">            display: none;</span></p>
+<p class="p1"><span class="s1">            align-items: center;</span></p>
+<p class="p1"><span class="s1">            justify-content: center;</span></p>
+<p class="p1"><span class="s1">            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);</span></p>
+<p class="p1"><span class="s1">            transition: all 0.3s ease;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .scroll-top:hover {</span></p>
+<p class="p1"><span class="s1">            transform: translateY(-4px);</span></p>
+<p class="p1"><span class="s1">            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.6);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .scroll-top.visible { display: flex; }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* SECTION LABELS */</span></p>
+<p class="p1"><span class="s1">        .section-label {</span></p>
+<p class="p1"><span class="s1">            display: inline-block;</span></p>
+<p class="p1"><span class="s1">            background: linear-gradient(135deg, #6366f1, #8b5cf6);</span></p>
+<p class="p1"><span class="s1">            color: white;</span></p>
+<p class="p1"><span class="s1">            padding: 6px 20px;</span></p>
+<p class="p1"><span class="s1">            border-radius: 9999px;</span></p>
+<p class="p1"><span class="s1">            font-size: 14px;</span></p>
+<p class="p1"><span class="s1">            font-weight: 600;</span></p>
+<p class="p1"><span class="s1">            letter-spacing: 1px;</span></p>
+<p class="p1"><span class="s1">            text-transform: uppercase;</span></p>
+<p class="p1"><span class="s1">            margin-bottom: 16px;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        /* RESPONSIVE */</span></p>
+<p class="p1"><span class="s1">        @media (max-width: 640px) {</span></p>
+<p class="p1"><span class="s1">            .modal-content { padding: 20px; margin: 16px; border-radius: 16px; }</span></p>
+<p class="p1"><span class="s1">            .cat-btn { padding: 20px 16px !important; }</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">    &lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- HEADER / PRESENTAZIONE --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;header class="glass sticky top-0 z-50 shadow-2xl"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="max-w-7xl mx-auto px-4 py-6 sm:py-8"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="text-center"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;h1 class="text-2xl sm:text-3xl md:text-5xl font-black bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400 bg-clip-text text-transparent mb-2"&gt;</span></p>
+<p class="p1"><span class="s1">                    Dott. Salvatore Trono</span></p>
+<p class="p1"><span class="s1">                &lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;p class="text-lg sm:text-xl md:text-2xl text-indigo-300 font-semibold"&gt;</span></p>
+<p class="p1"><span class="s1">                    Formatore - Esperto in Sicurezza sui Luoghi di Lavoro</span></p>
+<p class="p1"><span class="s1">                &lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/header&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- HERO --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;section class="hero-gradient py-16 sm:py-24 px-4"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="max-w-5xl mx-auto text-center"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;span class="section-label"&gt;Formazione Sicurezza&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;h2 class="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 sm:mb-8 leading-tight"&gt;</span></p>
+<p class="p1"><span class="s1">                Analisi Rischi&lt;br&gt;nel Magazzino</span></p>
+<p class="p1"><span class="s1">            &lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed"&gt;</span></p>
+<p class="p1"><span class="s1">                Elenco Completo dei Rischi Specifici nei Magazzini Merci Generali</span></p>
+<p class="p1"><span class="s1">            &lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="glass inline-flex items-center px-8 sm:px-12 py-4 sm:py-6 rounded-2xl shadow-2xl"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;span class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mr-3"&gt;43&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;span class="text-lg sm:text-xl text-gray-300 text-left"&gt;Rischi Specifici&lt;br&gt;Identificati&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- CATEGORIE - 8 PULSANTI --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;section class="py-12 sm:py-20 px-4"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="max-w-7xl mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="text-center mb-10 sm:mb-16"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;span class="section-label"&gt;Categorie di Rischio&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-4"&gt;</span></p>
+<p class="p1"><span class="s1">                    Seleziona una Categoria</span></p>
+<p class="p1"><span class="s1">                &lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;p class="text-gray-400 mt-3 text-base sm:text-lg"&gt;Clicca su una categoria per visualizzare tutti i rischi associati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">            &lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 1 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat1')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">⚙️</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Meccanici&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;7 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 2 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat2')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">🤕</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Traumatici&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;6 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 3 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat3')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">🏋️</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Posturali / MMC&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;3 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 4 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat4')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">☣️</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Chimici / Biologici&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;6 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 5 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat5')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">🌍</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Ambientali&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;6 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 6 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat6')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">🚜</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Carrelli Elevatori&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;6 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 7 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat7')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">🔥</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Rischi Incendio / Esplosione&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;6 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;!-- Cat 8 --&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button onclick="openCategory('cat8')" class="cat-btn glass rounded-2xl p-6 sm:p-8 text-left group"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="text-3xl sm:text-4xl mb-3"&gt;</span><span class="s2">🧠</span><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors"&gt;Psicosociali / Lavoro Notturno&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-sm text-gray-400"&gt;3 rischi identificati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- DISCLAIMER --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;section class="py-12 sm:py-16 px-4"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="max-w-4xl mx-auto glass rounded-2xl p-8 sm:p-10"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;h3 class="text-xl sm:text-2xl font-bold text-yellow-400 mb-4"&gt;</span><span class="s2">⚠️</span><span class="s1"> Disclaimer e Note Legali&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="text-sm sm:text-base text-gray-300 space-y-3 leading-relaxed"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;p&gt;Il presente materiale è stato elaborato dal &lt;strong class="text-white"&gt;Dott. Salvatore Trono&lt;/strong&gt; a scopo esclusivamente formativo e informativo, nell'ambito delle attività di formazione sulla sicurezza nei luoghi di lavoro.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;p&gt;I contenuti si basano sulla normativa vigente (D.Lgs. 81/2008 e s.m.i.) e sulle migliori pratiche riconosciute in materia di prevenzione e protezione dai rischi professionali.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;p&gt;È &lt;strong class="text-red-400"&gt;vietata la riproduzione, distribuzione o divulgazione&lt;/strong&gt;, anche parziale, del presente materiale senza l'autorizzazione scritta dell'autore.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;p&gt;Per informazioni, consulenze o collaborazioni: &lt;strong class="text-indigo-400"&gt;contattare il Dott. Salvatore Trono&lt;/strong&gt;.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/section&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- FOOTER --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;footer class="border-t border-gray-800 py-8 px-4"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="max-w-7xl mx-auto text-center"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;p class="text-gray-400 mb-2"&gt;&amp;copy; 2026 Dott. Salvatore Trono &amp;ndash; Tutti i diritti riservati&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;p class="text-gray-500 text-sm"&gt;Riproduzione e divulgazione vietate senza autorizzazione scritta dell'autore&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/footer&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- MODALE (struttura vuota, riempita da JS) --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;div id="riskModal" class="modal-overlay" onclick="closeModalOutside(event)"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div class="modal-content" id="modalContent"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;button class="modal-close" onclick="closeModal()" title="Chiudi"&gt;&amp;times;&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div id="modalBody"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- SCROLL TO TOP --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;button id="scrollTopBtn" class="scroll-top" onclick="scrollToTop()" title="Torna su"&gt;↑&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- JAVASCRIPT --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;!-- ============================================ --&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;script&gt;</span></p>
+<p class="p1"><span class="s1">    // ========== FUNZIONI NAVIGAZIONE ==========</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    function openCategory(catId) {</span></p>
+<p class="p1"><span class="s1">        const cat = RISCHI[catId];</span></p>
+<p class="p1"><span class="s1">        if (!cat) return;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        const modalBody = document.getElementById('modalBody');</span></p>
+<p class="p1"><span class="s1">        let html = `&lt;h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 pr-14"&gt;${cat.icon} ${cat.title}&lt;/h2&gt;`;</span></p>
+<p class="p1"><span class="s1">        html += `&lt;p class="text-indigo-400 font-semibold mb-8"&gt;${cat.risks.length} rischi identificati&lt;/p&gt;`;</span></p>
+<p class="p1"><span class="s1">        html += `&lt;div class="space-y-6"&gt;`;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        cat.risks.forEach(risk =&gt; {</span></p>
+<p class="p1"><span class="s1">            html += `</span></p>
+<p class="p1"><span class="s1">            &lt;div class="risk-card bg-gray-800/60 rounded-2xl p-6 sm:p-8"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;div class="flex items-start gap-4 mb-5"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 font-bold text-sm flex-shrink-0"&gt;${risk.id}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h3 class="text-xl sm:text-2xl font-bold text-white leading-tight"&gt;${risk.title}&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;div class="grid gap-4 sm:gap-5"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="bg-red-900/20 border border-red-500/20 rounded-xl p-4 sm:p-5"&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;h4 class="text-red-400 font-bold mb-2 text-sm uppercase tracking-wide"&gt;</span><span class="s2">🚨</span><span class="s1"> Cause / Fattori di Rischio&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;p class="text-gray-300 text-sm sm:text-base leading-relaxed"&gt;${risk.cause}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="bg-orange-900/20 border border-orange-500/20 rounded-xl p-4 sm:p-5"&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;h4 class="text-orange-400 font-bold mb-2 text-sm uppercase tracking-wide"&gt;</span><span class="s2">💥</span><span class="s1"> Danni / Conseguenze&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;p class="text-gray-300 text-sm sm:text-base leading-relaxed"&gt;${risk.danni}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;div class="bg-green-900/20 border border-green-500/20 rounded-xl p-4 sm:p-5"&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;h4 class="text-green-400 font-bold mb-2 text-sm uppercase tracking-wide"&gt;</span><span class="s2">🛡️</span><span class="s1"> Misure di Prevenzione&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;p class="text-gray-300 text-sm sm:text-base leading-relaxed"&gt;${risk.prevenzione}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1">        });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        html += `&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1">        modalBody.innerHTML = html;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        document.getElementById('riskModal').classList.add('active');</span></p>
+<p class="p1"><span class="s1">        document.body.style.overflow = 'hidden';</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    function closeModal() {</span></p>
+<p class="p1"><span class="s1">        document.getElementById('riskModal').classList.remove('active');</span></p>
+<p class="p1"><span class="s1">        document.body.style.overflow = '';</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    function closeModalOutside(e) {</span></p>
+<p class="p1"><span class="s1">        if (e.target === document.getElementById('riskModal')) {</span></p>
+<p class="p1"><span class="s1">            closeModal();</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    document.addEventListener('keydown', e =&gt; {</span></p>
+<p class="p1"><span class="s1">        if (e.key === 'Escape') closeModal();</span></p>
+<p class="p1"><span class="s1">    });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    // Scroll to top button</span></p>
+<p class="p1"><span class="s1">    window.addEventListener('scroll', () =&gt; {</span></p>
+<p class="p1"><span class="s1">        const btn = document.getElementById('scrollTopBtn');</span></p>
+<p class="p1"><span class="s1">        if (window.scrollY &gt; 400) {</span></p>
+<p class="p1"><span class="s1">            btn.classList.add('visible');</span></p>
+<p class="p1"><span class="s1">        } else {</span></p>
+<p class="p1"><span class="s1">            btn.classList.remove('visible');</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">    });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    function scrollToTop() {</span></p>
+<p class="p1"><span class="s1">        window.scrollTo({ top: 0, behavior: 'smooth' });</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    // ========== DATABASE RISCHI ==========</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    const RISCHI = {</span></p>
+<p class="p1"><span class="s1">&lt;!-- FINE BLOCCO 1 --&gt;</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 1: RISCHI MECCANICI (7 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat1: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">⚙️</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Meccanici",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Distorsioni Articolari",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le distorsioni articolari in magazzino sono causate principalmente da movimenti bruschi e improvvisi durante le operazioni di carico e scarico, dalla presenza di pavimentazioni irregolari, disconnesse o scivolose, dall'uso di calzature inadeguate prive di supporto alla caviglia, dalla fretta nelle operazioni dovuta a ritmi di lavoro intensi, dalla movimentazione manuale di carichi pesanti o ingombranti che riducono la visibilità, dall'illuminazione insufficiente nelle aree di transito e dalla mancanza di manutenzione dei percorsi pedonali.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze includono distorsioni alla caviglia con tempi di guarigione da 2 a 8 settimane, distorsioni al ginocchio con possibile interessamento dei legamenti crociati e menischi, distorsioni al polso durante le operazioni di presa e sollevamento, gonfiore ed ematomi nelle zone colpite, limitazione della capacità lavorativa durante il periodo di recupero, possibile cronicizzazione in caso di recidive ripetute e nei casi più gravi necessità di intervento chirurgico con lunghi periodi di riabilitazione.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure di prevenzione comprendono la manutenzione regolare delle pavimentazioni con riparazione immediata di buche e disconnessioni, la fornitura e l'obbligo di utilizzo di calzature antinfortunistiche con supporto alla caviglia di tipo S3, la formazione specifica sulle tecniche corrette di movimentazione manuale dei carichi, il mantenimento di un'illuminazione adeguata in tutte le aree di lavoro e transito con almeno 150 lux, l'organizzazione del lavoro con tempi adeguati per evitare la fretta, la segnaletica orizzontale per delimitare i percorsi pedonali e la pulizia costante dei pavimenti da oli, acqua e altri agenti scivolanti."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Lesioni da Sollevamento",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le lesioni da sollevamento derivano dal sollevamento ripetuto di carichi pesanti superiori ai 25 kg per gli uomini e 15 kg per le donne, dall'adozione di posture scorrette durante il sollevamento come la flessione della schiena anziché delle ginocchia, dalla mancanza di formazione specifica sulle tecniche di sollevamento ergonomiche, dall'assenza o insufficienza di ausili meccanici per la movimentazione, dai ritmi di lavoro che non consentono pause adeguate tra un sollevamento e l'altro, dalla movimentazione di carichi con forme irregolari difficili da afferrare e dalle condizioni ambientali sfavorevoli come superfici scivolose o spazi ristretti.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono lombalgie acute e croniche che rappresentano la prima causa di assenza dal lavoro, ernie discali lombari e cervicali con possibile compressione nervosa, stiramenti e strappi muscolari a carico della muscolatura paravertebrale, lesioni ai dischi intervertebrali con possibile protrusione o erniazione, sindrome delle faccette articolari con dolore cronico, possibile necessità di intervento chirurgico nei casi più gravi e invalidità permanente con riduzione della capacità lavorativa.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione prevede la valutazione del rischio secondo il metodo NIOSH per il sollevamento e il metodo OCRA per i movimenti ripetitivi, la fornitura di ausili meccanici come transpallet elettrici, carrelli elevatori, manipolatori e tavole elevatrici, la formazione periodica obbligatoria sulle tecniche di sollevamento ergonomiche, la rotazione delle mansioni per limitare l'esposizione continuativa, l'organizzazione del lavoro con pause programmate ogni 60 minuti di movimentazione continuativa, la riprogettazione delle postazioni per minimizzare i sollevamenti da terra e il monitoraggio sanitario tramite sorveglianza sanitaria specifica."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Sindrome del Tunnel Carpale",</span></p>
+<p class="p1"><span class="s1">                    cause: "La sindrome del tunnel carpale nel contesto del magazzino è causata da movimenti ripetitivi di presa, pinza e torsione del polso durante le operazioni di picking e confezionamento, dall'uso prolungato di strumenti vibranti come avvitatori e reggiatrici, dalla pressione prolungata sulla base del palmo durante la movimentazione di colli, dall'esposizione a vibrazioni mano-braccio trasmesse da attrezzature meccaniche, dalle posture forzate del polso in flessione o estensione durante le operazioni di imballaggio e dall'esecuzione di compiti che richiedono forza di presa elevata per periodi prolungati.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze includono formicolio e intorpidimento delle prime tre dita della mano che si manifesta inizialmente durante la notte, dolore al polso e alla mano che si estende progressivamente all'avambraccio, perdita progressiva della forza di presa con difficoltà a tenere oggetti, atrofia dell'eminenza tenare nei casi avanzati e non trattati, difficoltà nell'eseguire movimenti fini e di precisione, necessità di intervento chirurgico di decompressione nei casi resistenti alla terapia conservativa e possibile invalidità permanente con cambio mansione obbligatorio.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive comprendono la rotazione frequente delle mansioni con alternanza tra compiti che richiedono movimenti diversi, l'introduzione di pause attive con esercizi di stretching specifici per polsi e mani ogni 30 minuti, l'utilizzo di utensili ergonomici con impugnature antivibrazione e design anatomico, la riduzione dell'esposizione a vibrazioni mano-braccio al di sotto dei limiti previsti dal D.Lgs. 81/2008, la formazione dei lavoratori sul riconoscimento precoce dei sintomi, la sorveglianza sanitaria mirata con elettromiografia periodica per i lavoratori esposti e la riprogettazione delle postazioni di lavoro per mantenere il polso in posizione neutra."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.4",</span></p>
+<p class="p1"><span class="s1">                    title: "Tendiniti e Tendinopatie",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le tendiniti in ambiente di magazzino sono provocate dai movimenti ripetitivi e continui degli arti superiori durante le operazioni di prelievo, confezionamento e stoccaggio, dallo sforzo muscolare prolungato senza adeguati periodi di recupero, dalle vibrazioni trasmesse al sistema mano-braccio dall'uso di attrezzature meccaniche, dalle posture incongrue mantenute per tempi prolungati, dalla presa forzata e ripetitiva di oggetti di diverse dimensioni e pesi, dall'esposizione a temperature fredde che riducono l'elasticità dei tessuti e dalla mancanza di riscaldamento muscolare prima di iniziare le attività lavorative.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono epicondilite laterale nota come gomito del tennista con dolore nella zona esterna del gomito, epicondilite mediale nota come gomito del golfista con dolore nella zona interna, tendinite della cuffia dei rotatori con limitazione dei movimenti della spalla, tendinite di De Quervain con dolore al polso dal lato del pollice, borsite a livello di spalla, gomito e ginocchio, infiammazione cronica con possibile degenerazione del tessuto tendineo e nei casi non trattati rottura parziale o completa del tendine con necessità di intervento chirurgico.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione include la progettazione ergonomica delle postazioni di lavoro secondo le norme UNI EN ISO 11228, la rotazione delle mansioni con frequenza almeno ogni 2 ore, l'introduzione di micropause di 5-10 minuti ogni ora di lavoro ripetitivo, programmi di riscaldamento muscolare e stretching prima dell'inizio del turno, l'utilizzo di ausili meccanici per ridurre lo sforzo manuale, la formazione sui rischi da sovraccarico biomeccanico e la sorveglianza sanitaria con protocollo specifico per le patologie muscolo-scheletriche."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.5",</span></p>
+<p class="p1"><span class="s1">                    title: "Patologie degli Arti Inferiori",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le patologie degli arti inferiori sono causate dalla stazione eretta prolungata su superfici dure e senza tappetini anti-fatica, dalla camminata continua su pavimentazioni in calcestruzzo per l'intero turno di lavoro, dall'uso di calzature antinfortunistiche con suole rigide e scarso ammortizzamento, dalla salita e discesa ripetuta da mezzi e pedane, dal trasporto manuale di carichi che aumenta il carico sulle articolazioni degli arti inferiori, dall'esposizione a vibrazioni al corpo intero trasmesse dalla guida di carrelli elevatori e dal sovrappeso che amplifica tutti i fattori di rischio biomeccanici.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze includono fascite plantare con dolore intenso al tallone e alla pianta del piede, gonalgia da sovraccarico con degenerazione della cartilagine articolare del ginocchio, insufficienza venosa cronica con gonfiore agli arti inferiori e comparsa di varici, metatarsalgia con dolore nella parte anteriore del piede, coxartrosi con degenerazione dell'articolazione dell'anca nei casi di lunga esposizione, affaticamento muscolare cronico degli arti inferiori e nei casi più gravi necessità di protesi articolari.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive prevedono la fornitura di calzature antinfortunistiche ergonomiche con sistema di ammortizzamento e supporto plantare, l'installazione di tappetini anti-fatica nelle postazioni di lavoro fisse, la possibilità di alternare la posizione eretta con quella seduta attraverso sedili semi-seduti, la rotazione delle mansioni per variare il carico sugli arti inferiori, programmi di ginnastica preventiva e stretching specifico, la sorveglianza sanitaria mirata con valutazione dell'apparato muscolo-scheletrico degli arti inferiori e il controllo del peso corporeo attraverso programmi di promozione della salute."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.6",</span></p>
+<p class="p1"><span class="s1">                    title: "Ernie Discali",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le ernie discali nel contesto del magazzino sono causate dal sollevamento ripetuto di carichi pesanti con tecnica scorretta, dalla combinazione di flessione e torsione del tronco durante la movimentazione dei carichi, dall'esposizione a vibrazioni al corpo intero durante la guida prolungata di carrelli elevatori e transpallet, dalla postura seduta prolungata e non ergonomica sui mezzi di movimentazione, dal mantenimento prolungato di posture in flessione durante le operazioni a livello del suolo, dalla degenerazione discale progressiva dovuta al sovraccarico cronico e dalla predisposizione individuale aggravata dalle condizioni lavorative.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono lombosciatalgia acuta con dolore irradiato lungo il decorso del nervo sciatico, ernia discale con compressione radicolare e deficit neurologici sensitivi e motori, limitazione grave della mobilità del rachide con impossibilità di svolgere le normali attività, sindrome della cauda equina nei casi più gravi con disturbi sfinterici che rappresenta un'emergenza chirurgica, necessità di intervento chirurgico di discectomia o microdiscectomia, lunghi periodi di assenza dal lavoro con riabilitazione di 3-6 mesi e possibile invalidità permanente con necessità di cambio mansione definitivo.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione comprende la valutazione del rischio da movimentazione manuale dei carichi secondo il metodo NIOSH, la meccanizzazione delle operazioni di sollevamento con l'utilizzo di transpallet elettrici, manipolatori, tavole elevatrici e nastri trasportatori, la formazione pratica obbligatoria sulle tecniche corrette di sollevamento con flessione delle ginocchia e mantenimento della curva lombare, la limitazione del peso dei singoli colli a 25 kg per gli uomini e 15 kg per le donne, l'utilizzo di sedili ammortizzati e ergonomici sui mezzi di movimentazione, il rispetto delle pause previste per la guida di mezzi che trasmettono vibrazioni e la sorveglianza sanitaria con protocollo specifico rachide."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "1.7",</span></p>
+<p class="p1"><span class="s1">                    title: "Riepilogo Generale Rischi Meccanici",</span></p>
+<p class="p1"><span class="s1">                    cause: "I rischi meccanici in magazzino derivano complessivamente dall'interazione tra il lavoratore e le attrezzature, i carichi e l'ambiente di lavoro. I fattori principali sono la movimentazione manuale dei carichi, i movimenti ripetitivi degli arti superiori, le posture incongrue mantenute per tempi prolungati, l'esposizione a vibrazioni mano-braccio e corpo intero, la stazione eretta prolungata, l'utilizzo di attrezzature e mezzi di movimentazione e l'organizzazione del lavoro con ritmi e turni che non consentono adeguato recupero.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Il quadro complessivo dei danni da rischi meccanici comprende patologie muscolo-scheletriche che rappresentano oltre il 60% delle malattie professionali denunciate nel settore della logistica, con particolare incidenza di lombalgie, ernie discali, tendiniti, sindrome del tunnel carpale e patologie articolari. Queste patologie comportano assenze prolungate dal lavoro, costi elevati per il sistema sanitario e previdenziale, riduzione della qualità della vita dei lavoratori e in molti casi invalidità permanente.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "L'approccio preventivo globale ai rischi meccanici richiede un sistema integrato che comprende la valutazione ergonomica di tutte le postazioni e mansioni, la meccanizzazione e automazione delle operazioni più gravose, un programma formativo continuo e pratico, la sorveglianza sanitaria mirata con protocolli specifici, la rotazione delle mansioni, l'organizzazione del lavoro con pause adeguate, la fornitura di DPI ergonomici e certificati, la manutenzione preventiva di attrezzature e ambienti e il coinvolgimento attivo dei lavoratori nel processo di miglioramento continuo della sicurezza."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 2: RISCHI TRAUMATICI (6 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat2: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">🤕</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Traumatici",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "2.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Caduta di Materiali e Oggetti dall'Alto",</span></p>
+<p class="p1"><span class="s1">                    cause: "La caduta di materiali dall'alto in magazzino è causata dallo stoccaggio scorretto delle merci sugli scaffali con sovraccarico dei livelli superiori, dalla mancanza o inadeguatezza dei sistemi di trattenuta come reti, barre e fermi pallet, dal posizionamento instabile dei carichi sulle scaffalature, dall'uso improprio dei carrelli elevatori durante le operazioni di stoccaggio e prelievo ai livelli alti, dalle vibrazioni trasmesse alle scaffalature dal passaggio dei mezzi di movimentazione, dalla mancata manutenzione e verifica periodica delle scaffalature e dal cedimento strutturale delle scaffalature per sovraccarico o urto accidentale.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono traumi cranici di diversa gravità dal semplice bernoccolo al trauma cranico commotivo fino all'emorragia cerebrale, fratture ossee a carico di cranio, arti superiori, colonna vertebrale e piedi, schiacciamento di arti o dell'intero corpo in caso di crollo delle scaffalature, lesioni alla colonna vertebrale con possibile paralisi, contusioni e ferite lacero-contuse, nei casi più gravi il decesso del lavoratore e danni psicologici per i colleghi presenti all'evento.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure di prevenzione includono la verifica statica delle scaffalature con calcolo dei carichi massimi ammissibili e relativa segnaletica, l'installazione di sistemi di trattenuta dei carichi su tutti i livelli delle scaffalature, la formazione specifica degli addetti ai carrelli elevatori sulle tecniche corrette di stoccaggio, il divieto di accesso nelle zone di carico e scarico da parte di personale a piedi durante le operazioni con i mezzi, l'obbligo di utilizzo del casco protettivo nelle aree a rischio di caduta materiali, le ispezioni periodiche delle scaffalature con frequenza almeno trimestrale documentata, la manutenzione preventiva e la sostituzione immediata di elementi danneggiati e la corretta distribuzione dei carichi con i più pesanti nei livelli bassi."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "2.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Schiacciamento",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio di schiacciamento è determinato dall'operatività in prossimità di mezzi di movimentazione in movimento come carrelli elevatori e transpallet, dal posizionamento tra il carico e le strutture fisse durante le operazioni di stoccaggio, dal ribaltamento di carichi instabili o mal posizionati, dal cedimento di scaffalature sovraccariche o danneggiate, dalla mancanza di dispositivi di sicurezza sui mezzi come sensori di prossimità e segnalatori acustici, dalla carenza di percorsi separati per pedoni e mezzi e dalla mancanza di visibilità nelle zone di manovra.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da schiacciamento comprendono fratture multiple e comminute, lesioni da schiacciamento degli arti con possibile sindrome compartimentale, amputazioni traumatiche delle dita, della mano o di segmenti di arto, lesioni degli organi interni in caso di schiacciamento del tronco, lesioni midollari con paralisi temporanea o permanente, shock traumatico e nei casi più gravi il decesso per insufficienza multiorgano o emorragia massiva.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione dello schiacciamento richiede la separazione fisica dei percorsi pedonali da quelli dei mezzi con barriere e guard-rail, l'installazione di specchi parabolici e sensori di prossimità nelle zone ad alta frequentazione, la dotazione dei carrelli elevatori di segnalatori acustici e luminosi in funzione permanente durante il movimento, la formazione specifica sulla consapevolezza delle zone a rischio e sui comportamenti sicuri, l'adozione di procedure operative che vietino il posizionamento tra carico e strutture fisse, la manutenzione e verifica delle scaffalature e l'utilizzo di DPI specifici tra cui scarpe con puntale rinforzato."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "2.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Scivolamento e Cadute in Piano",</span></p>
+<p class="p1"><span class="s1">                    cause: "Lo scivolamento e le cadute in piano sono causati dalla presenza di liquidi, oli, acqua piovana e condensazione sulle pavimentazioni, dalla polvere e residui di imballaggio che riducono l'aderenza del pavimento, dalla pavimentazione danneggiata con buche, avvallamenti e giunti sollevati, dalla presenza di cavi elettrici, tubi e altri ostacoli nei percorsi pedonali, dall'illuminazione insufficiente che non consente di individuare i pericoli, dall'uso di calzature non adeguate con suole lisce e dall'ingombro delle vie di transito con materiali e attrezzature.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze includono contusioni e abrasioni diffuse, distorsioni articolari soprattutto a caviglia, ginocchio e polso, fratture da caduta in particolare del polso nel tentativo di protezione, del femore nelle persone anziane e delle vertebre, traumi cranici in caso di caduta all'indietro senza possibilità di protezione, lesioni ai tessuti molli con ematomi e versamenti articolari e nei casi gravi lesioni vertebrali con possibili deficit neurologici.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive comprendono il programma di pulizia regolare e documentato delle pavimentazioni con prodotti antiscivolo, la riparazione immediata di ogni danno alla pavimentazione, il trattamento antiscivolo delle superfici nelle zone a maggior rischio come ingressi, zone di carico e aree refrigerate, la segnaletica di avvertimento in caso di pavimento bagnato con cartelli visibili, l'eliminazione degli ostacoli dai percorsi pedonali con canalizzazione di cavi e tubi, il mantenimento dell'illuminazione a livelli adeguati con almeno 150 lux nelle aree di transito e la fornitura di calzature antinfortunistiche con suola antiscivolo certificata SRC."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "2.4",</span></p>
+<p class="p1"><span class="s1">                    title: "Collisioni con Oggetti in Movimento",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le collisioni con oggetti in movimento in magazzino sono causate dal transito contemporaneo di mezzi di movimentazione e pedoni nelle stesse aree, dalla mancanza di segnaletica e specchi nelle intersezioni e negli angoli ciechi, dalla velocità eccessiva dei carrelli elevatori nelle aree interne del magazzino, dalla scarsa visibilità dovuta a scaffalature alte e corsie strette, dall'assenza di separazione fisica tra percorsi pedonali e veicolari, dalla distrazione degli operatori dovuta a fattori come l'uso di dispositivi personali e dalla mancanza di segnalatori acustici e luminosi sui mezzi in movimento.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono contusioni di diversa gravità da lievi a severe, fratture ossee per urto diretto con il mezzo o per caduta conseguente alla collisione, traumi cranici in caso di investimento diretto, lesioni agli organi interni in caso di impatto violento, ferite lacero-contuse e abrasioni, distorsioni e lussazioni articolari e nei casi più gravi esiti fatali per investimento da carrello elevatore che rappresenta una delle principali cause di morte in magazzino.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la realizzazione di percorsi pedonali protetti e separati fisicamente con guard-rail, l'installazione di specchi parabolici e sensori a tutti gli incroci e angoli ciechi, la limitazione della velocità dei mezzi con dispositivi di limitazione elettronica a massimo 10 km/h nelle aree interne, l'obbligo di giubbotti ad alta visibilità per tutti gli operatori a piedi in conformità alla norma EN ISO 20471, la formazione periodica sulla sicurezza della circolazione interna, l'installazione di semafori e segnaletica stradale interna conforme al Codice della Strada e la dotazione di ogni mezzo con segnalatore acustico di retromarcia e lampeggiante."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "2.5",</span></p>
+<p class="p1"><span class="s1">                    title: "Collisioni e Ribaltamenti Carrelli Elevatori",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le collisioni e i ribaltamenti dei carrelli elevatori sono causati dalla velocità eccessiva nelle curve e nei cambi di direzione, dalla guida con carico in posizione elevata che alza il baricentro del mezzo, dalla presenza di pavimentazioni irregolari con pendenze e avvallamenti, dal sovraccarico del mezzo oltre la portata nominale indicata nella targhetta, dalla guida imprudente e dalla mancata osservanza delle norme di circolazione interna, dall'assenza di cintura di sicurezza che in caso di ribaltamento espone l'operatore a schiacciamento, dalle condizioni ambientali avverse come pioggia e ghiaccio nelle aree esterne e dalla manutenzione insufficiente del mezzo con pneumatici usurati e freni inefficienti.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono lo schiacciamento dell'operatore sotto il mezzo ribaltato che rappresenta la causa di morte più frequente legata ai carrelli elevatori, fratture multiple e politrauma, lesioni da schiacciamento degli arti con possibile amputazione, traumi cranici e vertebrali con possibili esiti neurologici permanenti, investimento di altri operatori presenti nell'area, danni alle strutture alle scaffalature e alle merci stoccate e nei casi peggiori il decesso dell'operatore o di terzi.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione include la formazione e l'abilitazione obbligatoria degli operatori secondo l'Accordo Stato Regioni del 22/02/2012 con rinnovo quinquennale, il controllo pre-utilizzo giornaliero del mezzo con check-list documentata, l'obbligo tassativo di utilizzo della cintura di sicurezza, la limitazione elettronica della velocità, il rispetto rigoroso della portata massima indicata nella targhetta, la manutenzione programmata secondo le indicazioni del costruttore con registro di manutenzione, la verifica e manutenzione delle pavimentazioni e il divieto assoluto di trasporto passeggeri e di sollevamento persone con le forche."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "2.6",</span></p>
+<p class="p1"><span class="s1">                    title: "Tagli e Ferite da Oggetti Taglienti",</span></p>
+<p class="p1"><span class="s1">                    cause: "I tagli e le ferite in magazzino sono causati dall'uso di cutter, taglierini e lame per l'apertura degli imballaggi, dalla manipolazione di materiali con bordi taglienti come lamiere, reggette metalliche e vetro, dalla rottura di imballaggi con fuoriuscita di frammenti taglienti, dall'uso improprio di utensili da taglio senza adeguata formazione, dalla mancanza di dispositivi di protezione individuale come guanti antitaglio, dalla fretta nelle operazioni di confezionamento e apertura colli e dalla presenza di chiodi, graffette e punti metallici sporgenti dagli imballaggi.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono ferite da taglio superficiali e profonde con possibile lesione di tendini, nervi e vasi sanguigni, ferite da punta con rischio di infezione, amputazioni parziali o totali delle dita in caso di utilizzo di macchinari da taglio, emorragie che possono essere anche gravi in caso di recisione di arterie, rischio di infezione delle ferite con possibile tetano se la vaccinazione non è aggiornata, cicatrici permanenti e limitazione funzionale e nei casi di lesione tendinea necessità di intervento chirurgico e riabilitazione prolungata.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive comprendono la fornitura e l'obbligo di utilizzo di guanti antitaglio certificati EN 388 con livello di protezione adeguato alla mansione, l'utilizzo di cutter di sicurezza con lama retrattile automatica, la formazione specifica sull'uso corretto degli utensili da taglio, la verifica dello stato di affilatura delle lame poiché le lame non affilate richiedono maggiore forza e aumentano il rischio, la disponibilità di kit di primo soccorso specifici per ferite da taglio in ogni area di lavoro, la procedura di smaltimento sicuro delle lame usate in contenitori rigidi e la verifica dell'aggiornamento della vaccinazione antitetanica per tutti i lavoratori."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 3: RISCHI POSTURALI/MMC (3 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat3: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">🏋️</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Posturali e MMC",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "3.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Movimenti Ripetitivi degli Arti Superiori",</span></p>
+<p class="p1"><span class="s1">                    cause: "I movimenti ripetitivi degli arti superiori in magazzino sono causati dalle operazioni di picking che richiedono la presa e il rilascio continuo di oggetti per l'intero turno di lavoro, dalle attività di confezionamento e imballaggio con movimenti ciclici identici ripetuti migliaia di volte al giorno, dall'utilizzo di scanner manuali e pistole barcode con movimenti ripetitivi del polso e delle dita, dalle operazioni di etichettatura e sigillatura dei colli, dalla mancanza di rotazione delle mansioni che espone sempre gli stessi distretti anatomici, dai ritmi di lavoro imposti da sistemi automatizzati che non consentono micropause e dalla progettazione non ergonomica delle postazioni di lavoro che costringe a movimenti non fisiologici.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono la sindrome del tunnel carpale con compressione del nervo mediano al polso, le tendiniti e tenosinoviti a carico dei tendini flessori ed estensori delle dita e del polso, l'epicondilite laterale e mediale con dolore e limitazione funzionale del gomito, la sindrome di De Quervain con infiammazione dei tendini del pollice, la periartrite scapolo-omerale con limitazione dolorosa dei movimenti della spalla, la borsite olecranica e sub-acromiale e nei casi cronici la degenerazione permanente dei tessuti con invalidità e necessità di cambio mansione definitivo.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la valutazione del rischio da movimenti ripetitivi secondo il metodo OCRA check-list come previsto dalla norma UNI EN ISO 11228-3, la riprogettazione delle postazioni di lavoro per minimizzare i movimenti non fisiologici, la rotazione delle mansioni con frequenza almeno ogni 2 ore alternando compiti che coinvolgono distretti anatomici diversi, l'introduzione di micropause di almeno 5 minuti ogni ora di lavoro ripetitivo, la meccanizzazione e automazione delle operazioni più ripetitive, la formazione specifica sui rischi da sovraccarico biomeccanico e sugli esercizi di compensazione, la sorveglianza sanitaria mirata con protocollo specifico per le patologie da movimenti ripetitivi e la fornitura di ausili ergonomici come impugnature anatomiche e supporti per polsi."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "3.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Posture Incongrue e Prolungate",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le posture incongrue in magazzino sono determinate dalle operazioni di prelievo e stoccaggio a livelli molto bassi che richiedono la flessione prolungata del tronco e l'accovacciamento, dalle operazioni a livelli elevati che richiedono l'estensione delle braccia sopra la testa e l'inarcamento della schiena, dal mantenimento della posizione eretta statica per periodi prolungati superiori alle 4 ore consecutive, dalla guida prolungata di carrelli elevatori in posizione seduta con torsione del tronco per la visione posteriore, dalla progettazione inadeguata delle postazioni di lavoro con altezze dei piani non regolabili, dagli spazi di lavoro ristretti che costringono a posture obbligate e dalla mancanza di supporti ergonomici come sedili, appoggi e pedane regolabili.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da posture incongrue comprendono cervicalgie e dorsalgie croniche con contrattura della muscolatura paravertebrale, lombalgie da mantenimento prolungato della flessione del tronco, discopatie degenerative accelerate dalla sollecitazione asimmetrica dei dischi intervertebrali, sindrome dello stretto toracico da posture con braccia elevate, gonalgia da accovacciamento prolungato con degenerazione meniscale, insufficienza venosa degli arti inferiori da stazione eretta prolungata con rischio di trombosi e affaticamento muscolare generalizzato con riduzione delle capacità attentive e aumento del rischio di infortunio.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive includono la riprogettazione delle postazioni di lavoro secondo i principi dell'ergonomia con altezze dei piani regolabili, l'utilizzo di pedane e piattaforme elevatrici per evitare di lavorare ad altezze non ergonomiche, l'installazione di sedili semi-seduti e sgabelli ergonomici nelle postazioni che richiedono stazione eretta prolungata, la rotazione delle mansioni per variare le posture assunte durante il turno, la formazione pratica sulle posture corrette di lavoro con dimostrazioni e esercitazioni, l'introduzione di pause attive con esercizi di stretching e compensazione posturale, la fornitura di tappetini anti-fatica nelle postazioni fisse e la sorveglianza sanitaria con valutazione specifica dell'apparato muscolo-scheletrico."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "3.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Sforzi Eccessivi nella Movimentazione",</span></p>
+<p class="p1"><span class="s1">                    cause: "Gli sforzi eccessivi sono determinati dalla movimentazione manuale di carichi superiori ai limiti raccomandati di 25 kg per gli uomini e 15 kg per le donne in condizioni ideali, dalla combinazione sfavorevole di fattori come la distanza orizzontale e verticale del carico dal corpo, la frequenza di sollevamento e la durata dell'esposizione, dalla movimentazione di carichi ingombranti con presa difficoltosa, dalle operazioni di traino e spinta con forze superiori ai limiti raccomandati, dalla mancanza di ausili meccanici adeguati o dalla loro indisponibilità temporanea, dai ritmi di lavoro che non consentono il recupero muscolare e dalla movimentazione in condizioni ambientali sfavorevoli come spazi ristretti, pavimenti scivolosi e temperature estreme.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze degli sforzi eccessivi comprendono lombalgie acute con possibile blocco funzionale del rachide, ernie discali lombari e cervicali con compressione radicolare e sciatalgia, strappi e stiramenti muscolari a carico della muscolatura del tronco e degli arti, lesioni tendinee acute con possibile rottura parziale o completa, ernie inguinali e addominali da aumento della pressione intra-addominale, riacutizzazione di patologie muscolo-scheletriche preesistenti e nei casi di sforzo massimale improvviso possibili eventi cardiovascolari acuti in soggetti predisposti.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione degli sforzi eccessivi richiede la valutazione sistematica del rischio da movimentazione manuale secondo la norma UNI EN ISO 11228 parti 1, 2 e 3 per sollevamento, traino-spinta e movimenti ripetitivi, l'eliminazione o la riduzione della movimentazione manuale attraverso la meccanizzazione con transpallet elettrici, nastri trasportatori, manipolatori pneumatici e robot collaborativi, la riduzione del peso dei singoli colli attraverso il frazionamento dei carichi, la formazione pratica obbligatoria sulle tecniche ergonomiche di sollevamento e movimentazione, l'organizzazione del lavoro con alternanza tra compiti gravosi e leggeri, il rispetto dei tempi di recupero con rapporto lavoro-pausa adeguato e la sorveglianza sanitaria con protocollo specifico per il rachide e gli arti."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 4: RISCHI CHIMICI/BIOLOGICI (6 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat4: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">☣️</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Chimici e Biologici",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "4.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Polveri e Particolato Aerodisperso",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione a polveri e particolato in magazzino è causata dalla movimentazione di merci impolverate e dall'apertura di imballaggi in cartone che rilasciano polvere di cellulosa, dai processi di carico e scarico di materiali sfusi come granulati, farine e polveri industriali, dal deterioramento degli imballaggi con rilascio di fibre e polveri, dalla circolazione dei mezzi di movimentazione che sollevano polvere depositata sulle pavimentazioni, dall'assenza o inefficienza dei sistemi di aspirazione e ventilazione, dalla mancata pulizia regolare dei locali con accumulo di polvere nelle zone alte e dalla manipolazione di prodotti che generano polveri fini come toner, cemento e materiali ceramici.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da esposizione a polveri comprendono irritazione delle vie respiratorie superiori con rinite, faringite e laringite, bronchite cronica da inalazione prolungata di polveri, asma occupazionale da sensibilizzazione a polveri organiche e inorganiche, pneumoconiosi in caso di esposizione prolungata a polveri minerali come silice e amianto, irritazione oculare con congiuntivite e cheratite, dermatiti da contatto nelle zone di cute esposta e nei soggetti allergici possibili reazioni anafilattiche.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure di prevenzione includono l'installazione di impianti di aspirazione localizzata nelle aree di maggiore produzione di polvere, la ventilazione meccanica generale del magazzino con ricambi d'aria adeguati, la pulizia regolare dei locali con sistemi ad aspirazione e non a secco per evitare il risollevamento della polvere, la bagnatura delle superfici polverose prima della movimentazione, la fornitura e l'obbligo di utilizzo di maschere filtranti FFP2 o FFP3 a seconda del tipo di polvere, la formazione dei lavoratori sui rischi da inalazione e sull'uso corretto dei DPI, il monitoraggio ambientale periodico della concentrazione di polveri con campionamenti personali e la sorveglianza sanitaria con spirometria periodica."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "4.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Sostanze Chimiche Pericolose",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione a sostanze chimiche pericolose in magazzino è determinata dallo stoccaggio e dalla movimentazione di prodotti chimici classificati come pericolosi secondo il Regolamento CLP, dalla possibilità di sversamento accidentale durante le operazioni di carico, scarico e stoccaggio, dalla rottura degli imballaggi con fuoriuscita del contenuto, dall'incompatibilità chimica tra prodotti stoccati in prossimità che possono generare reazioni pericolose, dalla mancanza o inadeguatezza delle schede di sicurezza SDS aggiornate, dall'assenza di bacini di contenimento e kit di emergenza per sversamenti e dalla ventilazione insufficiente nelle aree di stoccaggio di prodotti volatili.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono intossicazione acuta per inalazione di vapori o gas tossici con sintomi che vanno dalla cefalea e nausea fino alla perdita di coscienza e morte, ustioni chimiche della cute e delle mucose per contatto con sostanze corrosive, lesioni oculari gravi fino alla cecità per contatto con acidi o basi forti, dermatiti da contatto irritative e allergiche, sensibilizzazione respiratoria con possibile asma professionale, danni epatici e renali in caso di esposizione cronica a solventi organici e nei casi più gravi effetti cancerogeni per esposizione a sostanze classificate come cancerogene e mutagene.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede il censimento completo di tutte le sostanze chimiche presenti in magazzino con raccolta e aggiornamento delle schede di sicurezza SDS, la valutazione del rischio chimico secondo il D.Lgs. 81/2008 Titolo IX, lo stoccaggio corretto secondo le classi di compatibilità chimica con separazione delle sostanze incompatibili, l'installazione di bacini di contenimento per liquidi pericolosi, la disponibilità di kit di emergenza per sversamenti con materiali assorbenti specifici, la formazione dettagliata sulla lettura delle etichette CLP e delle schede di sicurezza, la fornitura di DPI specifici per il rischio chimico come guanti in nitrile, occhiali a tenuta, maschere con filtri appropriati e tute chimiche, la ventilazione adeguata delle aree di stoccaggio e la sorveglianza sanitaria con esami specifici in funzione delle sostanze manipolate."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "4.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Allergeni e Agenti Sensibilizzanti",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione ad allergeni in magazzino è causata dalla manipolazione di prodotti contenenti allergeni noti come lattice naturale presente nei guanti, resine epossidiche, isocianati e formaldeide, dal contatto con polveri di legno nelle operazioni con pallet in legno, dall'esposizione a muffe e funghi presenti su merci danneggiate dall'umidità, dalla presenza di acari della polvere nelle aree non adeguatamente ventilate, dal contatto con sostanze sensibilizzanti contenute nei prodotti stoccati come cosmetici, detersivi e prodotti chimici, dall'uso di materiali di imballaggio trattati con sostanze chimiche e dalla predisposizione individuale che amplifica la risposta allergica.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono dermatite allergica da contatto con eritema, vescicole e prurito nelle zone esposte, orticaria da contatto con pomfi e angioedema, rinite allergica con starnuti, rinorrea e ostruzione nasale, asma allergico professionale con broncospasmo, dispnea e tosse, congiuntivite allergica con lacrimazione, prurito e fotofobia, nei casi gravi reazioni anafilattiche con rischio di shock anafilattico potenzialmente fatale e sensibilizzazione permanente che impedisce qualsiasi futuro contatto con l'allergene responsabile.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive includono l'identificazione di tutti gli allergeni presenti nell'ambiente di lavoro attraverso la valutazione del rischio, la sostituzione dei materiali allergenici con alternative non sensibilizzanti come guanti in nitrile al posto di quelli in lattice, la ventilazione adeguata per ridurre la concentrazione aerodispersa degli allergeni, la pulizia regolare per eliminare polveri e muffe, la formazione dei lavoratori sul riconoscimento delle reazioni allergiche e sulle procedure di emergenza, la disponibilità di farmaci di emergenza come adrenalina autoiniettabile per i soggetti a rischio anafilassi, la sorveglianza sanitaria con anamnesi allergologica dettagliata e la gestione personalizzata dei lavoratori atopici con eventuale cambio mansione."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "4.4",</span></p>
+<p class="p1"><span class="s1">                    title: "Rischio Infettivo e Contaminazione Biologica",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio infettivo in magazzino è determinato dalla manipolazione di merci provenienti da aree geografiche con presenza di agenti biologici patogeni, dal contatto con animali infestanti come ratti, insetti e volatili che possono veicolare malattie, dalla presenza di muffe e batteri su merci danneggiate dall'umidità o contaminate, dalla manipolazione di rifiuti e materiali contaminati, dalla condivisione di attrezzature e utensili senza adeguata igienizzazione, dalle condizioni igieniche inadeguate dei servizi igienici e degli spogliatoi e dalla mancanza di procedure di igiene personale come il lavaggio delle mani.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono infezioni batteriche localizzate della cute e dei tessuti molli attraverso ferite e abrasioni, infezioni respiratorie da inalazione di bioaerosol contaminati, leptospirosi trasmessa attraverso il contatto con urine di ratti, tetano attraverso ferite contaminate da spore presenti nel terreno, infezioni fungine cutanee e respiratorie da esposizione a muffe, salmonellosi e altre infezioni gastrointestinali da contaminazione fecale e nei casi più gravi infezioni sistemiche con possibile sepsi.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione del rischio infettivo richiede il programma di derattizzazione e disinfestazione periodica del magazzino con monitoraggio continuo, la pulizia e disinfezione regolare degli ambienti di lavoro con prodotti specifici, la disponibilità di servizi igienici adeguati con acqua calda, sapone e asciugamani monouso, la formazione sull'igiene personale e sulle procedure di prevenzione delle infezioni, la vaccinazione antitetanica obbligatoria per tutti i lavoratori e la vaccinazione antiepatite per i lavoratori esposti, la fornitura di DPI come guanti monouso e mascherine per la manipolazione di materiali potenzialmente contaminati, le procedure di gestione delle ferite con disinfezione immediata e la sorveglianza sanitaria con esami ematici specifici per i lavoratori esposti."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "4.5",</span></p>
+<p class="p1"><span class="s1">                    title: "Gas di Scarico dei Mezzi di Movimentazione",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione ai gas di scarico in magazzino è causata dall'utilizzo di carrelli elevatori e altri mezzi di movimentazione alimentati a motore a combustione interna diesel, GPL o benzina in ambienti chiusi o semi-chiusi, dalla ventilazione insufficiente che non consente un adeguato ricambio dell'aria, dal funzionamento prolungato dei motori a regime minimo durante le attese, dalla manutenzione inadeguata dei motori con combustione incompleta e maggiore emissione di inquinanti, dal carico e scarico dei mezzi di trasporto con i motori accesi all'interno delle baie di carico, dall'accumulo dei gas nelle zone basse e negli angoli morti del magazzino e dalla contemporanea presenza di più mezzi in funzione nella stessa area.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da esposizione ai gas di scarico comprendono irritazione delle vie respiratorie con tosse, dispnea e bruciore alla gola causata dai gas irritanti come gli ossidi di azoto, cefalea, vertigini e nausea da esposizione al monossido di carbonio, intossicazione acuta da monossido di carbonio con confusione mentale, perdita di coscienza e nei casi gravi morte per asfissia, bronchite cronica e broncopneumopatia cronica ostruttiva da esposizione prolungata, effetti cancerogeni dei gas di scarico diesel classificati come cancerogeni certi dal gruppo 1 IARC, irritazione oculare e cutanea e nei soggetti asmatici aggravamento della sintomatologia respiratoria.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede prioritariamente la sostituzione dei mezzi a combustione interna con mezzi elettrici a batteria negli ambienti chiusi, l'installazione di impianti di ventilazione meccanica con portata adeguata al numero e alla tipologia dei mezzi presenti, la manutenzione programmata dei motori con controllo periodico delle emissioni, il divieto di funzionamento dei motori a regime minimo prolungato, l'installazione di sistemi di aspirazione localizzata nelle baie di carico, il monitoraggio ambientale periodico delle concentrazioni di monossido di carbonio e ossidi di azoto, la formazione dei lavoratori sui rischi da esposizione ai gas di scarico e la sorveglianza sanitaria con spirometria e dosaggio della carbossiemoglobina."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "4.6",</span></p>
+<p class="p1"><span class="s1">                    title: "Rischio Biologico Generale",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio biologico generale in magazzino è determinato dalla possibile contaminazione delle merci durante il trasporto e lo stoccaggio, dalla presenza di acqua stagnante e umidità che favoriscono la proliferazione di microrganismi, dalla presenza di animali infestanti come roditori, insetti, uccelli e pipistrelli che possono veicolare agenti patogeni attraverso escrementi, urine e parassiti, dalla gestione inadeguata dei rifiuti organici, dalla scarsa igiene degli ambienti comuni come spogliatoi, mense e servizi igienici, dalla manipolazione di merci alimentari deteriorate e dalla mancanza di procedure di sanificazione standardizzate.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono infezioni delle vie respiratorie da inalazione di bioaerosol contaminati da batteri e funghi, alveolite allergica estrinseca da esposizione a spore fungine nota anche come polmone del contadino, aspergillosi polmonare in soggetti immunocompromessi, dermatiti da contatto con materiali contaminati, infezioni gastrointestinali da contaminazione fecale degli ambienti, reazioni allergiche ad allergeni di origine biologica come acari, muffe e derivati epidermici di animali e nei casi più gravi zoonosi trasmesse dagli animali infestanti come leptospirosi, rickettsiosi e hantavirus.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive comprendono l'implementazione di un programma integrato di pest control con monitoraggio continuo e interventi di derattizzazione e disinfestazione programmati, la sanificazione periodica degli ambienti di lavoro con prodotti biocidi registrati, la gestione corretta dei rifiuti con raccolta differenziata e smaltimento tempestivo, l'eliminazione delle fonti di acqua stagnante e il controllo dell'umidità ambientale, la formazione dei lavoratori sulle norme igieniche fondamentali e sui rischi biologici, la fornitura di DPI monouso per la manipolazione di materiali potenzialmente contaminati, la disponibilità di punti di lavaggio delle mani con sapone disinfettante in tutte le aree di lavoro e la sorveglianza sanitaria con protocollo vaccinale aggiornato e monitoraggio sierologico per i lavoratori esposti."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 5: RISCHI AMBIENTALI (6 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat5: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">🌡️</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Ambientali",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "5.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Rumore Elevato",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione al rumore elevato in magazzino è causata dal funzionamento dei carrelli elevatori e dei transpallet che generano rumore sia dal motore che dal rotolamento sulle pavimentazioni, dal funzionamento di nastri trasportatori, rulliere e impianti di smistamento automatizzato, dalle operazioni di carico e scarico con urti e cadute di materiali metallici e pallet, dal funzionamento degli impianti di ventilazione e condizionamento in particolare nelle celle frigorifere, dalla compresenza di più fonti di rumore che si sommano creando livelli elevati, dall'utilizzo di avvolgitori di pallet e reggiatrici e dalla riverberazione del suono sulle superfici dure e riflettenti tipiche dei magazzini.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da esposizione al rumore comprendono l'ipoacusia da rumore che è una perdita uditiva irreversibile a carico delle frequenze acute inizialmente e poi progressivamente estesa a tutte le frequenze, gli acufeni ovvero la percezione di fischi e ronzii in assenza di stimolo sonoro esterno che rappresentano un disturbo invalidante, la difficoltà di comunicazione con isolamento sociale e rischio di incidenti per mancata percezione dei segnali di allarme, lo stress psicofisico con aumento della pressione arteriosa e della frequenza cardiaca, i disturbi del sonno e della concentrazione, l'aumento del rischio cardiovascolare per esposizione cronica e i disturbi dell'equilibrio.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la valutazione del rischio rumore secondo il D.Lgs. 81/2008 articoli 189-198 con misurazioni fonometriche periodiche, l'adozione di misure tecniche per la riduzione del rumore alla fonte come silenziatori, rivestimenti fonoassorbenti, ammortizzatori antivibranti e manutenzione dei componenti rumorosi, l'installazione di pannelli fonoassorbenti sulle pareti e sul soffitto del magazzino, la fornitura e l'obbligo di utilizzo di DPI uditivi come tappi auricolari e cuffie antirumore con adeguato abbattimento in decibel, la formazione dei lavoratori sui rischi da rumore e sull'uso corretto dei DPI, la segnaletica che indica le aree con livelli di rumore superiori a 85 dB(A), la rotazione delle mansioni per limitare il tempo di esposizione e la sorveglianza sanitaria con esame audiometrico annuale per i lavoratori esposti."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "5.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Vibrazioni Meccaniche",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione a vibrazioni meccaniche in magazzino è causata dalla guida prolungata di carrelli elevatori che trasmettono vibrazioni al corpo intero attraverso il sedile, dall'utilizzo di transpallet manuali ed elettrici su pavimentazioni irregolari, dall'uso di utensili vibranti come avvitatori pneumatici, chiodatrici e reggiatrici, dalla guida su pavimentazioni in cattivo stato con buche, giunti e dossi, dall'assenza di sedili ammortizzati e certificati sui mezzi di movimentazione, dalla manutenzione insufficiente dei mezzi con ammortizzatori e pneumatici usurati e dalla trasmissione di vibrazioni attraverso le impugnature di attrezzature non ammortizzate.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da vibrazioni si distinguono in danni da vibrazioni al corpo intero WBV e danni da vibrazioni mano-braccio HAV. Le vibrazioni al corpo intero causano lombalgie croniche, degenerazione precoce dei dischi intervertebrali, ernie discali, disturbi gastrointestinali e disturbi del sistema circolatorio. Le vibrazioni mano-braccio causano la sindrome del dito bianco nota anche come fenomeno di Raynaud professionale con vasospasmo delle arterie digitali, neuropatie periferiche con formicolio e perdita di sensibilità, sindrome del tunnel carpale, artrosi precoce delle articolazioni del polso e del gomito e riduzione permanente della forza di presa.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la valutazione del rischio vibrazioni secondo il D.Lgs. 81/2008 articoli 199-205 con misurazione dei livelli di esposizione, la sostituzione dei mezzi più vecchi con modelli dotati di sistemi antivibranti di ultima generazione, l'installazione di sedili ammortizzati e certificati su tutti i carrelli elevatori, la manutenzione regolare delle pavimentazioni per eliminare buche e discontinuità, la limitazione del tempo di esposizione giornaliero per non superare i valori di azione e i valori limite, l'utilizzo di guanti antivibranti certificati secondo la norma EN ISO 10819 per le vibrazioni mano-braccio, la manutenzione programmata dei mezzi con particolare attenzione agli ammortizzatori e ai pneumatici e la sorveglianza sanitaria con protocollo specifico che comprende l'esame vascolare e neurologico delle mani."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "5.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Illuminazione Inadeguata",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'illuminazione inadeguata in magazzino è causata dalla insufficiente progettazione dell'impianto illuminotecnico con numero e posizionamento non corretto dei corpi illuminanti, dalla mancata manutenzione dell'impianto con lampade esaurite o degradate non sostituite, dalla presenza di zone d'ombra create dalle scaffalature alte e dalle strutture del magazzino, dall'abbagliamento diretto e indiretto causato da lampade non schermate o da superfici riflettenti, dal contrasto eccessivo tra zone molto illuminate e zone in ombra, dalla mancanza di illuminazione di emergenza adeguata e dalla sporcizia accumulata sulle lampade e sulle superfici vetrate che riduce il flusso luminoso.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da illuminazione inadeguata comprendono l'affaticamento visivo con cefalea, bruciore oculare e lacrimazione, la riduzione dell'acuità visiva temporanea e nei casi cronici permanente, l'aumento del rischio di infortunio per mancata percezione di ostacoli, dislivelli e pericoli, gli errori nella lettura di etichette, codici e documenti con conseguenti errori operativi, i disturbi muscolo-scheletrici dovuti all'assunzione di posture scorrette per compensare la scarsa visibilità, lo stress psicologico da lavoro in ambienti bui o con illuminazione non confortevole e i disturbi del ritmo circadiano con effetti sul sonno e sull'umore.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive includono la progettazione o riprogettazione dell'impianto illuminotecnico secondo la norma UNI EN 12464-1 con livelli di illuminamento adeguati alle attività svolte, con almeno 150 lux nelle aree di transito, 200 lux nelle aree di stoccaggio e 300 lux nelle aree di picking e confezionamento, l'installazione di apparecchi illuminanti a LED di ultima generazione con elevata efficienza e resa cromatica, la manutenzione programmata dell'impianto con sostituzione preventiva delle lampade degradate, l'eliminazione delle zone d'ombra con illuminazione supplementare nelle corsie tra le scaffalature, la schermatura delle sorgenti per evitare l'abbagliamento diretto e indiretto, l'installazione di illuminazione di emergenza conforme alla norma UNI EN 1838 e la pulizia periodica dei corpi illuminanti e delle superfici vetrate."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "5.4",</span></p>
+<p class="p1"><span class="s1">                    title: "Radiazioni Non Ionizzanti",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione a radiazioni non ionizzanti in magazzino è causata dall'utilizzo di scanner laser per la lettura dei codici a barre sia manuali che fissi, dalla presenza di sistemi di saldatura e taglio nei reparti di manutenzione adiacenti al magazzino, dall'illuminazione a LED ad alta intensità con componente di luce blu elevata, dai sistemi di riscaldamento a infrarossi utilizzati in alcune aree, dalla presenza di impianti di telecomunicazione e antenne Wi-Fi a potenza elevata e dall'eventuale utilizzo di sistemi di disinfezione a raggi UV.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni potenziali comprendono lesioni retiniche da esposizione diretta a fasci laser di classe superiore alla 1, eritema cutaneo e ustioni da esposizione a radiazioni infrarosse intense, cataratta da esposizione cronica a radiazioni infrarosse, cheratite fotoelettrica da esposizione a radiazioni ultraviolette, effetti termici sui tessuti superficiali da esposizione a microonde e radiofrequenze e nei casi di esposizione cronica possibili effetti a lungo termine ancora oggetto di studio.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la classificazione di tutte le sorgenti di radiazioni presenti secondo le normative vigenti, l'utilizzo di scanner laser di classe 1 o 2 che non comportano rischi in condizioni di uso normale, la schermatura e la segnaletica per le sorgenti di classe superiore, la formazione dei lavoratori sui rischi specifici e sulle procedure di sicurezza, la limitazione dell'accesso alle aree con sorgenti di radiazione pericolose, la fornitura di DPI specifici come occhiali protettivi per laser e filtri per radiazioni UV e la sorveglianza sanitaria con esame oculistico per i lavoratori esposti."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "5.5",</span></p>
+<p class="p1"><span class="s1">                    title: "Campi Elettromagnetici",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione a campi elettromagnetici in magazzino è causata dalla presenza di sistemi RFID a radiofrequenza utilizzati per la tracciabilità delle merci, dagli impianti di telecomunicazione wireless ad alta potenza compresi i sistemi Wi-Fi industriali e le reti 5G private, dai sistemi di ricarica induttiva delle batterie dei carrelli elettrici, dalla presenza di quadri elettrici e trasformatori ad alta potenza, dai sistemi di saldatura elettrica e ad induzione nel reparto manutenzione, dai metal detector e sistemi antitaccheggio alle uscite e dai dispositivi di comunicazione radio utilizzati dal personale.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni potenziali comprendono riscaldamento dei tessuti biologici per esposizione a campi a radiofrequenza ad alta intensità, stimolazione di nervi e muscoli per esposizione a campi a bassa frequenza ad alta intensità, interferenza con dispositivi medici impiantati come pacemaker e defibrillatori che rappresenta il rischio più grave e immediato, cefalea e disturbi della concentrazione riferiti dai lavoratori esposti, possibili effetti a lungo termine oggetto di ricerca scientifica e in caso di lavoratrici in gravidanza possibili effetti sullo sviluppo embrionale.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la valutazione dell'esposizione ai campi elettromagnetici secondo il D.Lgs. 81/2008 Titolo VIII Capo IV, la misurazione dei livelli di esposizione e il confronto con i valori limite e di azione definiti dalla normativa, la segnaletica delle aree con livelli di campo superiori ai valori di azione, l'identificazione e la gestione dei lavoratori particolarmente a rischio in particolare i portatori di pacemaker e dispositivi medici impiantati che devono essere esclusi dalle aree a rischio, la formazione dei lavoratori sui rischi specifici, il mantenimento delle distanze di sicurezza dalle sorgenti e la sorveglianza sanitaria specifica per i lavoratori esposti."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "5.6",</span></p>
+<p class="p1"><span class="s1">                    title: "Microclima Sfavorevole",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il microclima sfavorevole in magazzino è causato dall'assenza o inadeguatezza degli impianti di climatizzazione e riscaldamento, dall'esposizione a temperature estreme sia calde in estate che fredde in inverno tipiche dei grandi capannoni industriali non coibentati, dalla presenza di celle frigorifere e aree refrigerate con temperature anche inferiori a meno 25 gradi centigradi, dalle correnti d'aria fredda provenienti dalle baie di carico aperte, dagli sbalzi termici ripetuti nel passaggio tra aree a temperatura diversa, dall'umidità relativa non controllata con condizioni sia troppo secche che troppo umide e dall'irraggiamento solare diretto attraverso lucernari e coperture in materiale traslucido.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da microclima sfavorevole comprendono colpo di calore e ipertermia con possibile exitus in caso di esposizione prolungata a temperature elevate, disidratazione e squilibri elettrolitici, crampi muscolari da calore e da freddo, ipotermia generale e congelamento delle estremità in caso di lavoro in celle frigorifere, patologie respiratorie da sbalzi termici ripetuti con bronchiti e polmoniti, riduzione delle capacità cognitive e attentive con aumento del rischio di infortunio, malattie da raffreddamento e influenzali e aggravamento di patologie cardiovascolari e respiratorie preesistenti.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "Le misure preventive comprendono l'installazione di impianti di climatizzazione e riscaldamento adeguati alle dimensioni del magazzino, la coibentazione termica delle coperture e delle pareti, l'installazione di barriere d'aria nelle baie di carico per ridurre gli scambi termici, la fornitura di abbigliamento tecnico specifico per il lavoro in ambienti freddi con sistema di vestizione a strati e per ambienti caldi con tessuti traspiranti, la programmazione delle attività più gravose nelle ore meno calde della giornata durante il periodo estivo, la disponibilità di acqua fresca e integratori salini nelle aree di lavoro, la rotazione del personale nelle aree a temperatura estrema con limitazione del tempo di permanenza, la formazione sui rischi da stress termico e la sorveglianza sanitaria con attenzione ai soggetti con patologie preesistenti."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 6: RISCHI CARRELLI ELEVATORI (6 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat6: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">🚜</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Carrelli Elevatori",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "6.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Ribaltamento del Carrello Elevatore",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il ribaltamento del carrello elevatore è causato dalla velocità eccessiva in curva che genera forza centrifuga superiore alla stabilità laterale del mezzo, dal trasporto di carichi con le forche in posizione elevata che alza il baricentro e riduce la stabilità, dal superamento della portata massima del carrello con sovraccarico delle forche, dalla circolazione su pavimentazioni in pendenza, irregolari o con buche, dalle manovre brusche di sterzata e frenata, dalla circolazione su rampe con inclinazione superiore a quella consentita dal costruttore, dall'azione del vento laterale nelle aree esterne e dal carico posizionato in modo asimmetrico sulle forche.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze del ribaltamento comprendono lo schiacciamento dell'operatore sotto il carrello che rappresenta la causa più frequente di morte nell'uso dei carrelli elevatori, i traumi cranici e vertebrali gravissimi per l'operatore sbalzato fuori dall'abitacolo, le fratture multiple agli arti e al torace, i traumi da schiacciamento a carico di altri lavoratori presenti nelle vicinanze, i danni alle strutture e alle merci stoccate con possibile effetto domino sulle scaffalature e nei casi più gravi il decesso dell'operatore o di terzi.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione del ribaltamento richiede la formazione e l'addestramento obbligatorio degli operatori con rilascio dell'abilitazione specifica secondo l'Accordo Stato-Regioni del 22 febbraio 2012, il rispetto rigoroso dei limiti di velocità con installazione di limitatori elettronici, il trasporto dei carichi con le forche abbassate a circa 15-20 cm da terra e inclinate all'indietro, il rispetto della portata massima indicata sulla targhetta del carrello, la manutenzione regolare delle pavimentazioni, l'utilizzo di carrelli dotati di cabina di protezione ROPS certificata, il divieto di circolazione su pendenze superiori a quelle consentite, la verifica quotidiana dello stato del carrello prima dell'uso attraverso la check-list preoperativa e l'installazione di sistemi di allarme per il superamento della velocità e della portata."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "6.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Investimento di Pedoni",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'investimento di pedoni è causato dalla promiscuità dei percorsi pedonali e veicolari senza adeguata separazione fisica, dalla scarsa visibilità dell'operatore del carrello in particolare durante la marcia indietro e con carichi ingombranti che ostruiscono la visuale, dalla velocità eccessiva del carrello nelle aree con presenza di personale a piedi, dalla mancanza di specchi parabolici agli incroci e nei punti ciechi, dall'assenza di segnaletica acustica e luminosa sui carrelli, dalla distrazione sia dell'operatore che del pedone dovuta all'uso di dispositivi elettronici e auricolari, dall'illuminazione insufficiente nelle aree di transito e dalla mancanza di attraversamenti pedonali segnalati.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze dell'investimento comprendono fratture degli arti inferiori per urto diretto con il carrello, traumi da schiacciamento dei piedi sotto le ruote del mezzo anche con esiti di amputazione, traumi toracici e addominali con possibili lesioni degli organi interni, traumi cranici con possibile ematoma cerebrale e danni neurologici permanenti, politraumi con coinvolgimento di più distretti corporei e nei casi più gravi il decesso del lavoratore investito.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione dell'investimento richiede la separazione fisica dei percorsi pedonali e veicolari attraverso barriere, guard-rail e cordoli, la segnaletica orizzontale e verticale chiara e ben visibile per delimitare le aree di transito, l'installazione di specchi parabolici a tutti gli incroci e punti ciechi, la dotazione di tutti i carrelli con lampeggiante giallo, cicalino di retromarcia e luci blue spot che proiettano un segnale luminoso a terra visibile anche in presenza di rumore, l'imposizione di limiti di velocità ridotti nelle aree con presenza di pedoni, la formazione di tutti i lavoratori sia carrellisti che pedoni sulle regole di convivenza nei percorsi, il divieto di utilizzo di auricolari e telefoni durante la circolazione e l'installazione di sistemi di rilevamento presenza persone a tecnologia radar o RFID."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "6.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Caduta del Carico dalle Forche",</span></p>
+<p class="p1"><span class="s1">                    cause: "La caduta del carico dalle forche è causata dal posizionamento non corretto del carico sulle forche con baricentro spostato o carico non centrato, dalla mancata inclinazione all'indietro delle forche durante il trasporto, dalla velocità eccessiva con frenate brusche che fanno scivolare il carico in avanti, dal trasporto di carichi non pallettizzati o con pallet danneggiati, dall'urto delle forche contro ostacoli durante le manovre di inserimento e prelievo, dal sollevamento di carichi instabili non adeguatamente fasciati o legati, dalla rottura del pallet durante il sollevamento e dal malfunzionamento del sistema idraulico di inclinazione delle forche.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono traumi da schiacciamento a carico dei lavoratori colpiti dalla caduta del carico con fratture e lesioni dei tessuti molli, traumi cranici anche mortali in caso di caduta di carichi pesanti dall'alto, lesioni degli arti superiori e inferiori per tentativo di evitare o trattenere il carico, danni alle merci con perdite economiche significative, danni alle strutture e alle pavimentazioni, possibile effetto domino con coinvolgimento di altre merci stoccate e nei casi di caduta di sostanze pericolose rischio di sversamento e contaminazione.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la formazione degli operatori sul corretto posizionamento e bilanciamento dei carichi sulle forche, la verifica della stabilità e dell'integrità del carico e del pallet prima di ogni sollevamento, l'inclinazione all'indietro delle forche durante il trasporto, il rispetto dei limiti di velocità per evitare frenate brusche, l'utilizzo di accessori di trattenuta come pinze, bracci laterali e piastre di spinta per carichi particolari, la fasciatura e la reggiatura adeguata dei carichi pallettizzati, la manutenzione dell'impianto idraulico del carrello e la sostituzione dei pallet danneggiati prima del sollevamento."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "6.4",</span></p>
+<p class="p1"><span class="s1">                    title: "Collisione tra Mezzi o contro Strutture",</span></p>
+<p class="p1"><span class="s1">                    cause: "Le collisioni sono causate dalla velocità eccessiva nelle aree di manovra e nelle corsie strette tra le scaffalature, dalla scarsa visibilità dovuta a carichi ingombranti, angoli ciechi e illuminazione insufficiente, dalla mancanza di regole di precedenza e di sensi unici nelle corsie del magazzino, dalla contemporanea circolazione di più carrelli nella stessa area, dalla distrazione dell'operatore durante le manovre, dalla pavimentazione scivolosa che allunga gli spazi di frenata, dalla segnaletica insufficiente o deteriorata e dal malfunzionamento dei sistemi frenanti del carrello.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze delle collisioni comprendono traumi contusivi e fratture per l'operatore a causa della decelerazione brusca e dell'urto contro le strutture del carrello, danni alle scaffalature con possibile cedimento strutturale e crollo, danneggiamento delle merci stoccate, danni al carrello elevatore con costi di riparazione o sostituzione, possibile effetto domino con crollo a catena delle scaffalature, sversamento di sostanze pericolose in caso di rottura dei contenitori e nei casi più gravi lesioni fatali per gli operatori e per i lavoratori nelle vicinanze.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione delle collisioni richiede la definizione e la segnalazione chiara dei sensi di marcia e delle regole di precedenza nelle corsie del magazzino, l'installazione di specchi parabolici e segnaletica luminosa agli incroci, l'imposizione e il controllo dei limiti di velocità con limitatori elettronici, la protezione delle strutture portanti delle scaffalature con paracolpi e protezioni antiurto in acciaio, la manutenzione regolare dei sistemi frenanti e di sterzo dei carrelli, l'installazione di sistemi anticollisione a tecnologia radar o ultrasuoni, la formazione continua degli operatori e la pianificazione dei flussi di traffico per minimizzare i conflitti tra mezzi."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "6.5",</span></p>
+<p class="p1"><span class="s1">                    title: "Caduta dall'Alto durante le Operazioni in Quota",</span></p>
+<p class="p1"><span class="s1">                    cause: "La caduta dall'alto durante le operazioni con il carrello elevatore è causata dall'utilizzo improprio del carrello per sollevare persone senza la cesta di sicurezza omologata, dall'accesso alle scaffalature ad altezze elevate arrampicandosi sui ripiani per operazioni di prelievo o inventario, dal cedimento delle scaffalature durante le operazioni di carico ai livelli superiori, dalla perdita di equilibrio durante le operazioni manuali eseguite dalla cesta di sicurezza, dalla mancata manutenzione della cesta con difetti strutturali o di aggancio e dal mancato utilizzo dei dispositivi di protezione individuale contro le cadute dall'alto durante le operazioni in quota.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze della caduta dall'alto comprendono fratture vertebrali con possibile lesione del midollo spinale e paralisi permanente, traumi cranici gravi con ematoma cerebrale, fratture multiple degli arti, del bacino e delle costole, traumi toracici con pneumotorace e emotorace, traumi addominali con lesione degli organi interni e nei casi di caduta da altezze superiori ai 3 metri un'elevata probabilità di esito mortale o di invalidità permanente gravissima.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione della caduta dall'alto richiede il divieto assoluto di sollevare persone con le forche del carrello senza la cesta di sicurezza omologata e conforme alla norma UNI EN ISO 3691-1, l'utilizzo esclusivo di ceste di sicurezza omologate con parapetto perimetrale alto almeno un metro e arresto a livello, la formazione specifica degli operatori sull'uso corretto della cesta di sicurezza, l'obbligo di utilizzo di imbracatura di sicurezza con cordino collegato alla cesta durante tutte le operazioni in quota, l'utilizzo preferenziale di piattaforme elevabili mobili per i lavori in quota ripetitivi, la manutenzione e la verifica periodica della cesta di sicurezza e la valutazione dell'idoneità fisica degli operatori per il lavoro in quota."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "6.6",</span></p>
+<p class="p1"><span class="s1">                    title: "Esposizione a Gas e Rumore del Carrello",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'esposizione a gas e rumore specifici del carrello elevatore è causata dal funzionamento del motore a combustione interna diesel o GPL in ambienti chiusi con ventilazione insufficiente, dal rumore generato dal motore e dalla trasmissione e amplificato dall'ambiente confinato del magazzino, dalle vibrazioni trasmesse al corpo intero attraverso il sedile del carrello, dalla mancata manutenzione del motore con emissioni inquinanti superiori ai limiti, dal funzionamento prolungato a regime minimo durante le attese e dal riscaldamento del motore in ambienti chiusi prima dell'inizio delle operazioni.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni comprendono quelli già descritti per l'esposizione ai gas di scarico tra cui intossicazione da monossido di carbonio, irritazione delle vie respiratorie ed effetti cancerogeni dei gas diesel, ipoacusia professionale da esposizione prolungata al rumore del carrello, lombalgia e discopatie da vibrazioni trasmesse al corpo intero, stress psicofisico dalla combinazione di rumore, vibrazioni e inquinamento atmosferico e riduzione delle capacità attentive con aumento del rischio di incidente.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede prioritariamente la sostituzione dei carrelli a combustione interna con carrelli elettrici a batteria negli ambienti chiusi come previsto dalle migliori pratiche di settore, per i carrelli a combustione interna ancora in uso l'installazione di filtri antiparticolato e catalizzatori, la ventilazione meccanica adeguata del magazzino, la manutenzione programmata dei motori con controllo delle emissioni, l'installazione di sedili ammortizzati con sospensione pneumatica, la fornitura di DPI uditivi per gli operatori e i lavoratori nelle vicinanze, la limitazione del tempo di esposizione giornaliero e la sorveglianza sanitaria con protocollo specifico che comprende spirometria, audiometria e valutazione del rachide."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 7: RISCHI INCENDIO/ELETTRICI (6 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat7: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">🔥</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Incendio ed Elettrici",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "7.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Incendio da Materiali Stoccati",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio di incendio da materiali stoccati è determinato dalla grande quantità di materiali combustibili presenti in magazzino come cartone, legno dei pallet, plastica degli imballaggi, tessuti e materiali espansi, dall'accumulo di materiale di imballaggio di scarto non tempestivamente rimosso, dalla vicinanza delle merci combustibili a fonti di innesco come impianti elettrici, carrelli in ricarica e operazioni di manutenzione con fiamme libere, dall'assenza o inadeguatezza del piano di stoccaggio con accumuli disordinati che favoriscono la propagazione delle fiamme, dalla mancata compartimentazione delle aree a rischio, dalla assenza di impianti di rilevazione e spegnimento automatico e dalla presenza di materiali infiammabili come solventi, vernici e spray stoccati insieme ai materiali ordinari.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze dell'incendio comprendono ustioni di vario grado a carico dei lavoratori presenti con possibili esiti invalidanti o mortali, intossicazione da fumi tossici che rappresenta la principale causa di morte negli incendi, asfissia per consumo dell'ossigeno disponibile, traumi da crollo delle strutture e delle scaffalature danneggiate dal calore, panico e traumi durante l'evacuazione, distruzione totale o parziale delle merci e delle strutture con danni economici ingentissimi, danni ambientali da rilascio di sostanze inquinanti e interruzione dell'attività con conseguenze economiche e occupazionali.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione dell'incendio richiede la valutazione del rischio incendio secondo il DM 3 agosto 2015 con classificazione del livello di rischio, l'installazione di impianti di rilevazione automatica di fumo e calore con centralina di allarme, l'installazione di impianti di spegnimento automatico sprinkler dimensionati secondo le norme UNI EN 12845, la disponibilità di estintori e idranti in numero e posizione adeguati con manutenzione semestrale, la compartimentazione delle aree a maggior rischio con strutture REI, l'organizzazione ordinata dello stoccaggio con separazione dei materiali per classi di pericolosità, la rimozione tempestiva dei materiali di scarto e di imballaggio, il divieto di fumo e fiamme libere con segnaletica appropriata, la formazione di tutti i lavoratori come addetti antincendio e l'esercitazione periodica del piano di emergenza ed evacuazione almeno annuale."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "7.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Esplosione di Batterie e Aree di Ricarica",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio di esplosione nelle aree di ricarica delle batterie è causato dallo sviluppo di idrogeno gassoso durante la fase di carica delle batterie al piombo-acido che in concentrazione tra il 4 e il 75 percento in aria forma una miscela esplosiva, dalla ventilazione insufficiente del locale di ricarica che consente l'accumulo di idrogeno, dalla presenza di fonti di innesco come scintille elettriche, fiamme libere, sigarette e utensili non antideflagranti, dal cortocircuito dei morsetti della batteria durante le operazioni di collegamento e scollegamento, dal sovraccarico delle batterie per malfunzionamento del caricabatterie, dall'utilizzo di caricabatterie non adeguati al tipo di batteria e dalla mancata manutenzione delle batterie con livelli di elettrolita non controllati.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono esplosione della batteria con proiezione di frammenti e schegge dell'involucro, ustioni chimiche da acido solforico contenuto nell'elettrolita della batteria, ustioni termiche da fiamma, lesioni oculari gravi fino alla cecità per proiezione di acido, intossicazione da inalazione di vapori di acido solforico e di idrogeno, incendio secondario con coinvolgimento delle strutture e delle merci circostanti e nei casi più gravi lesioni mortali per l'operatore presente nelle vicinanze.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la realizzazione di un locale di ricarica dedicato e separato dal magazzino con strutture REI adeguate, la ventilazione meccanica del locale con portata sufficiente a mantenere la concentrazione di idrogeno al di sotto del limite inferiore di esplosività, l'installazione di rilevatori di idrogeno con allarme e blocco automatico della ricarica, l'utilizzo di impianti elettrici e attrezzature antideflagranti ATEX nel locale di ricarica, il divieto assoluto di fiamme libere e fumo, la formazione degli operatori sulle procedure corrette di collegamento e scollegamento delle batterie, la manutenzione programmata delle batterie e dei caricabatterie, la disponibilità di docce e lavaocchi di emergenza in prossimità dell'area di ricarica e la segnaletica di pericolo esplosione conforme."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "7.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Contatto Elettrico Diretto e Indiretto",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio di contatto elettrico è causato dal danneggiamento dell'isolamento dei cavi elettrici per usura, abrasione o schiacciamento da parte dei mezzi di movimentazione, dall'utilizzo di apparecchiature elettriche con involucri danneggiati che espongono parti in tensione, dall'intervento su impianti e apparecchiature elettriche da parte di personale non qualificato, dalla presenza di prese e spine industriali danneggiate o non conformi, dal contatto con linee elettriche aeree durante l'utilizzo di carrelli elevatori e piattaforme elevabili, dalla mancanza o inefficienza dell'impianto di messa a terra e dei dispositivi di protezione differenziale e dalla presenza di acqua e umidità che riducono la resistenza elettrica del corpo e favoriscono l'elettrocuzione.",</span></p>
+<p class="p1"><span class="s1">                    danni: "I danni da contatto elettrico comprendono la tetanizzazione muscolare con impossibilità di rilasciare la presa dalla parte in tensione, ustioni elettriche localizzate nel punto di ingresso e di uscita della corrente con necrosi dei tessuti profondi, fibrillazione ventricolare e arresto cardiaco che rappresentano la causa principale di morte per elettrocuzione, arresto respiratorio per paralisi dei muscoli respiratori, ustioni interne lungo il percorso della corrente con danni muscolari e vascolari, effetti neurologici con perdita di coscienza, amnesia e neuropatie e nei casi di arco elettrico ustioni termiche gravissime e lesioni oculari.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la progettazione e la realizzazione dell'impianto elettrico conforme alla norma CEI 64-8 con adeguato grado di protezione IP per l'ambiente di magazzino, la verifica periodica dell'impianto di messa a terra e dei dispositivi differenziali con prova di funzionamento almeno semestrale, la protezione dei cavi elettrici dal passaggio dei mezzi con canaline e percorsi protetti, la manutenzione dell'impianto elettrico esclusivamente da parte di personale qualificato PES e PAV, il divieto di intervento su apparecchiature sotto tensione da parte di personale non autorizzato, la formazione di base sui rischi elettrici per tutti i lavoratori, la verifica dell'integrità delle apparecchiature elettriche portatili prima dell'uso e la disponibilità di dispositivi di rianimazione DAE con personale formato al loro utilizzo."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "7.4",</span></p>
+<p class="p1"><span class="s1">                    title: "Incendio dell'Impianto Elettrico",</span></p>
+<p class="p1"><span class="s1">                    cause: "L'incendio dell'impianto elettrico è causato dal sovraccarico delle linee elettriche per collegamento di carichi superiori alla portata dei cavi, dal cortocircuito per deterioramento dell'isolamento dei conduttori, dal surriscaldamento delle connessioni elettriche allentate o ossidate, dall'utilizzo di prolunghe e ciabatte multiple non conformi in serie, dalla mancata selettività delle protezioni con intervento ritardato o mancato degli interruttori, dall'accumulo di polvere e materiale combustibile nei quadri elettrici e dalla obsolescenza dell'impianto con componenti non più conformi alle normative vigenti.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono incendio con possibilità di rapida propagazione attraverso i cavi e le canaline a tutte le aree del magazzino, sviluppo di fumi tossici dalla combustione dei materiali isolanti in PVC con rilascio di acido cloridrico e diossine, interruzione dell'alimentazione elettrica con blocco degli impianti di sicurezza se non dotati di alimentazione di emergenza, danni alle apparecchiature e alle merci, rischio di esplosione se l'incendio coinvolge aree con atmosfere esplosive, lesioni e decessi per ustioni e intossicazione da fumi e danni strutturali all'edificio.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la verifica della conformità dell'impianto elettrico alle norme CEI vigenti con dichiarazione di conformità aggiornata, il dimensionamento corretto delle linee e delle protezioni per il carico effettivo, la manutenzione preventiva dell'impianto con termografia periodica per individuare i punti di surriscaldamento, il divieto di utilizzo di prolunghe e adattatori non conformi, la pulizia periodica dei quadri elettrici con rimozione della polvere, l'installazione di interruttori con protezione differenziale e magnetotermica selettiva, la compartimentazione dei percorsi cavi con barriere tagliafuoco e l'aggiornamento dell'impianto obsoleto secondo le norme attuali."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "7.5",</span></p>
+<p class="p1"><span class="s1">                    title: "Fulminazione e Sovratensioni Atmosferiche",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio di fulminazione è causato dalla struttura metallica dei magazzini che costituisce un elemento attrattore per i fulmini, dall'altezza degli edifici e dalla posizione isolata tipica delle zone industriali e logistiche, dalla presenza di scaffalature metalliche alte che possono fungere da conduttore, dall'assenza o inadeguatezza dell'impianto di protezione contro le scariche atmosferiche, dalla mancanza di dispositivi di protezione dalle sovratensioni SPD sull'impianto elettrico e dalla presenza di personale all'esterno durante i temporali per le operazioni di carico e scarico.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze della fulminazione comprendono folgorazione diretta del personale presente all'esterno con possibile arresto cardiaco e morte immediata, incendio dell'edificio e delle merci per surriscaldamento dei conduttori, danneggiamento irreversibile delle apparecchiature elettriche e elettroniche per sovratensione con perdita di dati e blocco dei sistemi informatici, esplosione in aree con atmosfere potenzialmente esplosive, danni strutturali all'edificio e interruzione dell'attività con danni economici rilevanti.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la valutazione del rischio fulminazione secondo la norma CEI EN 62305 con calcolo della probabilità di fulminazione e delle conseguenze attese, l'installazione dell'impianto di protezione contro le scariche atmosferiche LPS esterno con captatori, calate e dispersori dimensionati secondo la norma, l'installazione di dispositivi di protezione dalle sovratensioni SPD sui quadri elettrici, la messa a terra di tutte le masse metalliche comprese le scaffalature, la verifica periodica dell'impianto di protezione con misura della resistenza di terra, la formazione del personale sulle procedure di comportamento durante i temporali con sospensione delle attività all'aperto e il collegamento equipotenziale di tutte le strutture metalliche."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "7.6",</span></p>
+<p class="p1"><span class="s1">                    title: "Arco Elettrico e Scariche",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio di arco elettrico è causato dall'apertura sotto carico di sezionatori e interruttori non adeguati all'interruzione della corrente di carico, dalle operazioni di manutenzione su quadri elettrici in tensione, dal cortocircuito improvviso per guasto dell'isolamento o contatto accidentale, dall'introduzione di oggetti metallici nei quadri elettrici come utensili non isolati, dalla presenza di umidità e contaminanti conduttivi nei quadri che riducono le distanze di isolamento, dal deterioramento dei componenti di manovra e protezione e dall'assenza di procedure di lavoro in sicurezza sugli impianti elettrici.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze dell'arco elettrico comprendono ustioni termiche gravissime per le temperature che possono raggiungere i 20.000 gradi centigradi con fusione dei metalli e proiezione di schizzi incandescenti, ustioni da radiazione ultravioletta e infrarossa emessa dall'arco, lesioni oculari permanenti per esposizione alla luce intensa dell'arco, lesioni da onda di pressione generata dall'espansione esplosiva dell'aria con possibili danni timpanabili e polmonari, inalazione di fumi metallici tossici generati dalla vaporizzazione dei conduttori, incendio dei materiali circostanti e nei casi gravi decesso per le ustioni estese o per i traumi da esplosione.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede l'analisi del rischio arco elettrico con calcolo dell'energia incidente secondo le norme IEEE 1584, l'adozione di procedure di lavoro in sicurezza con messa fuori tensione, sezionamento, blocco e verifica dell'assenza di tensione prima di qualsiasi intervento, l'utilizzo di DPI specifici per il rischio arco elettrico come visiere, guanti e indumenti resistenti all'arco con livello di protezione adeguato all'energia calcolata, la formazione specifica del personale elettricista sui rischi da arco elettrico e sulle procedure di lavoro in sicurezza, la manutenzione preventiva dei componenti di manovra e protezione, l'installazione di relè di protezione con tempi di intervento rapidi per limitare l'energia dell'arco e l'utilizzo esclusivo di utensili isolati per i lavori in prossimità di parti in tensione."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        },</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        // CATEGORIA 8: RISCHI PSICOSOCIALI/ORGANIZZATIVI (3 rischi)</span></p>
+<p class="p1"><span class="s1">        // ========================================</span></p>
+<p class="p1"><span class="s1">        cat8: {</span></p>
+<p class="p1"><span class="s1">            icon: "</span><span class="s2">🧠</span><span class="s1">",</span></p>
+<p class="p1"><span class="s1">            title: "Rischi Psicosociali e Organizzativi",</span></p>
+<p class="p1"><span class="s1">            risks: [</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "8.1",</span></p>
+<p class="p1"><span class="s1">                    title: "Stress Lavoro-Correlato",</span></p>
+<p class="p1"><span class="s1">                    cause: "Lo stress lavoro-correlato in magazzino è causato dai ritmi di lavoro intensi e dalla pressione sulla produttività con obiettivi di picking e preparazione ordini sempre più elevati, dalla ripetitività e monotonia delle mansioni che riducono la motivazione e la soddisfazione lavorativa, dalla mancanza di autonomia decisionale con compiti rigidamente predefiniti dai sistemi informatici, dall'incertezza e precarietà contrattuale tipica del settore logistico con ampio ricorso al lavoro interinale e agli appalti, dai turni di lavoro irregolari e dal lavoro notturno che alterano i ritmi biologici, dal clima organizzativo negativo con conflitti interpersonali e mancanza di supporto da parte dei superiori, dalla percezione di ingiustizia nella distribuzione dei carichi di lavoro e dalla scarsa possibilità di crescita professionale.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze dello stress lavoro-correlato comprendono disturbi psicologici come ansia, depressione, irritabilità, difficoltà di concentrazione e burnout, disturbi psicosomatici come cefalea tensiva, disturbi gastrointestinali, tachicardia, ipertensione arteriosa e disturbi dermatologici, disturbi muscolo-scheletrici aggravati dalla tensione muscolare cronica, disturbi del sonno con insonnia e sonnolenza diurna che aumentano il rischio di infortunio, abuso di alcol, farmaci e sostanze come strategia di coping disfunzionale, aumento dell'assenteismo e del turnover con costi organizzativi significativi e nei casi più gravi ideazione suicidaria.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione dello stress lavoro-correlato richiede la valutazione obbligatoria secondo il D.Lgs. 81/2008 articolo 28 con metodologia validata come quella proposta dall'INAIL, l'intervento sulle cause organizzative attraverso la riprogettazione dei processi di lavoro per ridurre la monotonia e aumentare l'autonomia, la definizione di carichi di lavoro sostenibili e la distribuzione equa dei compiti, la promozione della partecipazione dei lavoratori alle decisioni che li riguardano, la formazione dei dirigenti e dei preposti sulla gestione dello stress e sulla comunicazione efficace, l'attivazione di sportelli di ascolto e supporto psicologico, la promozione di un clima organizzativo positivo con riconoscimento dei meriti e gestione costruttiva dei conflitti e il monitoraggio periodico del benessere organizzativo."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "8.2",</span></p>
+<p class="p1"><span class="s1">                    title: "Lavoro Notturno e Turnazione",</span></p>
+<p class="p1"><span class="s1">                    cause: "I rischi del lavoro notturno e della turnazione in magazzino sono causati dall'organizzazione del lavoro su turni avvicendati che comprende il turno notturno per garantire la continuità del servizio logistico, dall'alterazione del ritmo circadiano con desincronizzazione dell'orologio biologico interno, dalla riduzione della qualità e della quantità del sonno diurno dovuta al rumore ambientale, alla luce e agli impegni familiari, dall'isolamento sociale e dalla difficoltà di conciliazione tra vita lavorativa e vita privata, dalla riduzione della vigilanza e delle capacità cognitive durante le ore notturne, dalla difficoltà di alimentazione corretta con pasti irregolari e ricorso a cibi poco salutari e dalla minore disponibilità di servizi di supporto e di supervisione durante il turno notturno.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze comprendono disturbi del sonno cronici con insonnia, sonnolenza diurna eccessiva e sindrome delle apnee ostruttive, affaticamento cronico con riduzione delle capacità cognitive e aumento del rischio di errori e infortuni, disturbi gastrointestinali come gastrite, ulcera peptica, sindrome dell'intestino irritabile e reflusso gastroesofageo, disturbi cardiovascolari con aumento del rischio di infarto miocardico e ictus cerebrale, disturbi metabolici con aumento del rischio di obesità, diabete di tipo 2 e sindrome metabolica, disturbi dell'umore con depressione e ansia, probabile aumento del rischio di alcuni tumori come classificato dalla IARC che ha inserito il lavoro notturno nel gruppo 2A dei probabili cancerogeni e difficoltà relazionali con aumento del rischio di separazione e isolamento sociale.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la progettazione dei turni secondo i criteri ergonomici con rotazione in senso orario mattina-pomeriggio-notte, la durata del turno notturno non superiore a 8 ore, la limitazione del numero di notti consecutive a massimo 3, il rispetto del riposo minimo di 11 ore tra un turno e il successivo, la valutazione dell'idoneità al lavoro notturno attraverso la sorveglianza sanitaria con protocollo specifico, la formazione dei lavoratori sull'igiene del sonno e sulla gestione dei ritmi biologici, l'adeguamento dell'illuminazione del magazzino durante il turno notturno per sostenere la vigilanza, la disponibilità di pasti caldi e salutari anche durante il turno notturno, la maggiorazione economica e i riposi compensativi previsti dalla normativa e il monitoraggio periodico dello stato di salute dei turnisti."</span></p>
+<p class="p1"><span class="s1">                },</span></p>
+<p class="p1"><span class="s1">                {</span></p>
+<p class="p1"><span class="s1">                    id: "8.3",</span></p>
+<p class="p1"><span class="s1">                    title: "Lavoro Isolato e in Emergenza",</span></p>
+<p class="p1"><span class="s1">                    cause: "Il rischio del lavoro isolato in magazzino è causato dalla presenza di lavoratori che operano da soli in aree remote o poco frequentate del magazzino durante i turni notturni o nei giorni festivi, dalla grande estensione delle strutture logistiche che rende difficile la comunicazione e il soccorso rapido, dall'impossibilità di essere visti o uditi da altri lavoratori in caso di malore o infortunio, dalla mancanza di sistemi di comunicazione e di allarme individuale, dalla presenza di rischi specifici come l'utilizzo di mezzi di movimentazione e il lavoro in quota che richiedono la presenza di un secondo operatore, dalla gestione inadeguata delle emergenze in orari con personale ridotto e dalla mancanza di procedure specifiche per il lavoro isolato.",</span></p>
+<p class="p1"><span class="s1">                    danni: "Le conseguenze del lavoro isolato comprendono il ritardo nell'attivazione dei soccorsi in caso di infortunio con aggravamento delle lesioni che in caso di emorragia, infarto o trauma vertebrale può determinare la differenza tra la vita e la morte, l'impossibilità di ricevere primo soccorso immediato, il panico e lo stress psicologico derivante dalla consapevolezza di lavorare da soli in un ambiente potenzialmente pericoloso, l'aggravamento delle conseguenze di qualsiasi infortunio per la mancanza di assistenza immediata, il rischio di aggressioni da parte di malintenzionati durante il turno notturno e l'impossibilità di gestire situazioni di emergenza come incendio o sversamento che richiedono l'intervento coordinato di più persone.",</span></p>
+<p class="p1"><span class="s1">                    prevenzione: "La prevenzione richiede la valutazione specifica del rischio da lavoro isolato con identificazione delle mansioni e delle aree in cui il lavoro solitario non è ammesso, la dotazione di sistemi di allarme individuali tipo uomo a terra con rilevamento automatico della caduta e dell'immobilità e trasmissione dell'allarme alla centrale operativa, la dotazione di sistemi di comunicazione radio o telefonica sempre funzionanti, l'organizzazione del lavoro per evitare il lavoro isolato nelle mansioni a rischio elevato, la pianificazione di ronde periodiche di controllo da parte del personale di sicurezza, la formazione specifica sulle procedure di emergenza per il lavoratore isolato, l'installazione di telecamere di sorveglianza con monitoraggio continuo e l'elaborazione di procedure specifiche per il lavoro isolato che definiscano le modalità di comunicazione, i tempi di verifica e le azioni in caso di mancata risposta."</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            ]</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">    };</span></p>
+<p class="p1"><span class="s1">    // ========== FINE DATABASE RISCHI ==========</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    // ========== FUNZIONE APERTURA CATEGORIA ==========</span></p>
+<p class="p1"><span class="s1">    function openCategory(catId) {</span></p>
+<p class="p1"><span class="s1">        const cat = RISCHI[catId];</span></p>
+<p class="p1"><span class="s1">        if (!cat) return;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        const modal = document.getElementById('riskModal');</span></p>
+<p class="p1"><span class="s1">        const modalTitle = document.getElementById('modalTitle');</span></p>
+<p class="p1"><span class="s1">        const modalBody = document.getElementById('modalBody');</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        modalTitle.innerHTML = `&lt;span class="text-3xl mr-3"&gt;${cat.icon}&lt;/span&gt; ${cat.title}`;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        let html = '';</span></p>
+<p class="p1"><span class="s1">        cat.risks.forEach((risk, index) =&gt; {</span></p>
+<p class="p1"><span class="s1">            html += `</span></p>
+<p class="p1"><span class="s1">            &lt;div class="risk-card mb-6 p-6 rounded-2xl border border-white/10" style="animation-delay: ${index * 0.08}s"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;div class="flex items-center gap-3 mb-4"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;span class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-bold" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;"&gt;${risk.id}&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h3 class="text-xl font-bold text-white"&gt;${risk.title}&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;div class="mb-4 p-4 rounded-xl" style="background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444;"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-sm font-bold uppercase tracking-wider text-red-400 mb-2"&gt;</span><span class="s2">⚠️</span><span class="s1"> Cause e Fattori di Rischio&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-slate-300 text-sm leading-relaxed"&gt;${risk.cause}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;div class="mb-4 p-4 rounded-xl" style="background: rgba(245,158,11,0.08); border-left: 4px solid #f59e0b;"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-sm font-bold uppercase tracking-wider text-amber-400 mb-2"&gt;</span><span class="s2">🏥</span><span class="s1"> Danni e Conseguenze&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-slate-300 text-sm leading-relaxed"&gt;${risk.danni}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">                &lt;div class="p-4 rounded-xl" style="background: rgba(34,197,94,0.08); border-left: 4px solid #22c55e;"&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;h4 class="text-sm font-bold uppercase tracking-wider text-green-400 mb-2"&gt;</span><span class="s2">🛡️</span><span class="s1"> Misure di Prevenzione e Protezione&lt;/h4&gt;</span></p>
+<p class="p1"><span class="s1">                    &lt;p class="text-slate-300 text-sm leading-relaxed"&gt;${risk.prevenzione}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            `;</span></p>
+<p class="p1"><span class="s1">        });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        modalBody.innerHTML = html;</span></p>
+<p class="p1"><span class="s1">        modal.classList.add('active');</span></p>
+<p class="p1"><span class="s1">        document.body.style.overflow = 'hidden';</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    // ========== CONTATORE RISCHI HOMEPAGE ==========</span></p>
+<p class="p1"><span class="s1">    function updateCounters() {</span></p>
+<p class="p1"><span class="s1">        const counters = {</span></p>
+<p class="p1"><span class="s1">            'count1': RISCHI.cat1 ? RISCHI.cat1.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count2': RISCHI.cat2 ? RISCHI.cat2.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count3': RISCHI.cat3 ? RISCHI.cat3.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count4': RISCHI.cat4 ? RISCHI.cat4.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count5': RISCHI.cat5 ? RISCHI.cat5.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count6': RISCHI.cat6 ? RISCHI.cat6.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count7': RISCHI.cat7 ? RISCHI.cat7.risks.length : 0,</span></p>
+<p class="p1"><span class="s1">            'count8': RISCHI.cat8 ? RISCHI.cat8.risks.length : 0</span></p>
+<p class="p1"><span class="s1">        };</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">        let total = 0;</span></p>
+<p class="p1"><span class="s1">        for (const [id, count] of Object.entries(counters)) {</span></p>
+<p class="p1"><span class="s1">            const el = document.getElementById(id);</span></p>
+<p class="p1"><span class="s1">            if (el) el.textContent = count;</span></p>
+<p class="p1"><span class="s1">            total += count;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        const totalEl = document.getElementById('totalRisks');</span></p>
+<p class="p1"><span class="s1">        if (totalEl) totalEl.textContent = total;</span></p>
+<p class="p1"><span class="s1">    }</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    // ========== INIZIALIZZAZIONE ==========</span></p>
+<p class="p1"><span class="s1">    document.addEventListener('DOMContentLoaded', () =&gt; {</span></p>
+<p class="p1"><span class="s1">        updateCounters();</span></p>
+<p class="p1"><span class="s1">    });</span></p>
+<p class="p1"><span class="s1"> </span></p>
+<p class="p1"><span class="s1">    &lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
